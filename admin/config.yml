@@ -1,0 +1,19 @@
+backend:
+  name: github
+  repo: kebim/learn-site # e.g., johnsmith/learn
+  branch: main # change to master if your default branch is master
+
+media_folder: "images/uploads" # Where images will be saved
+public_folder: "/images/uploads"
+
+collections:
+  - name: "lessons"
+    label: "Teaching Materials"
+    folder: "lessons" # Folder where your notes will be stored
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Subject/Topic", name: "topic", widget: "string" }
+      - { label: "Lesson Body", name: "body", widget: "markdown" }
