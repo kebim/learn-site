@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: kebim/learn-site # e.g., johnsmith/learn
+  repo: kebim/learn-site# e.g., johnsmith/learn
   branch: main # change to master if your default branch is master
   base_url: https://learnkebim.mibekebim.workers.dev # Your Cloudflare Worker URL
   auth_endpoint: /auth
