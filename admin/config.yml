@@ -1,17 +1,17 @@
 backend:
   name: github
-  repo: kebim/learn-site# e.g., johnsmith/learn
-  branch: main # change to master if your default branch is master
-  base_url: https://learnkebim.mibekebim.workers.dev # Your Cloudflare Worker URL
+  repo: kebim/learn-site
+  branch: main
+  base_url: https://learnkebim.mibekebim.workers.dev
   auth_endpoint: /auth
 
-media_folder: "images/uploads" # Where images will be saved
+media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 collections:
   - name: "lessons"
     label: "Teaching Materials"
-    folder: "lessons" # Folder where your notes will be stored
+    folder: "lessons"
     create: true
     slug: "{{slug}}"
     fields:
