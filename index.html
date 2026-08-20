@@ -3,208 +3,232 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Core IT, Networking & Cyber Security Hub</title>
+    <title>Enterprise IT & Cybersecurity Interactive Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        code, pre { font-family: 'JetBrains+Mono', monospace; }
+        body { font-family: 'Inter', sans-serif; transition: background-color 0.3s, color 0.3s; }
+        code, pre, .mono { font-family: 'JetBrains+Mono', monospace; }
         .dark-mode { background-color: #0f172a; color: #f8fafc; }
-        .dark-mode .card { background-color: #1e293b; border-color: #334155; }
-        .dark-mode .badge { background-color: #334155; color: #38bdf8; }
-        .dark-mode pre { background-color: #0f172a; border-color: #334155; }
-        .dark-mode input, .dark-mode textarea { background-color: #1e293b; border-color: #334155; color: #f8fafc; }
-        .terminal-glow { box-shadow: 0 0 15px rgba(34, 197, 94, 0.2); }
+        .dark-mode .custom-card { background-color: #1e293b; border-color: #334155; }
+        .dark-mode pre, .dark-mode .code-block { background-color: #0f172a; border-color: #334155; }
+        .maximized { position: fixed !important; top: 0 !important; left: 0 !important; width: 100vw !important; height: 100vh !important; z-index: 9999 !important; margin: 0 !important; border-radius: 0 !important; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900 transition-colors duration-200 min-h-screen flex flex-col">
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col">
 
-    <!-- Navigation Header -->
-    <header class="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b border-gray-200 dark:border-slate-800 transition-colors duration-200">
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-                <span class="text-2xl">⚡</span>
-                <span class="font-bold text-xl tracking-tight bg-gradient-to-r from-emerald-500 to-blue-600 bg-clip-text text-transparent">IT Core & Networking Hub</span>
+                <span class="text-2xl">🛡️</span>
+                <span class="font-bold text-lg sm:text-xl bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent">IT Engineering Academy</span>
             </div>
-            <div class="flex items-center space-x-4">
-                <button id="themeToggle" class="p-2 rounded-lg bg-gray-100 dark:bg-slate-800 hover:bg-gray-200 dark:hover:bg-slate-700 transition" aria-label="Toggle Dark Mode">
-                    <span id="themeIcon">🌙</span>
-                </button>
-            </div>
+            <button id="themeToggle" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                <span id="themeIcon">🌙</span>
+            </button>
         </div>
     </header>
 
-    <!-- Main Content Container -->
-    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Main Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
         
-        <!-- Hero and Live Search System -->
-        <div class="text-center max-w-2xl mx-auto mb-12">
-            <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl mb-4">Interactive IT Reference Hub</h1>
-            <p class="text-gray-600 dark:text-gray-400 text-lg mb-6">Interactive terminal emulation, networking sandboxes, and structural cheat sheets.</p>
-            <div class="relative">
-                <input type="text" id="searchInput" placeholder="Search topics (e.g., git, subnet, xss, cidr, port)..." 
-                       class="w-full pl-5 pr-12 py-3 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
-                <span class="absolute right-4 top-3.5 text-gray-400">🔍</span>
+        <!-- Search & Welcome Header -->
+        <div class="text-center max-w-3xl mx-auto space-y-4">
+            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight">Interactive IT Foundations & Engineering Hub</h1>
+            <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg">Deployable reference logs, operational deep-dives, and side-by-side terminal simulation consoles.</p>
+            
+            <div class="relative max-w-xl mx-auto pt-2">
+                <input type="text" id="searchInput" placeholder="Search parameters (e.g., tcp, subnet, git, exploit)..." 
+                       class="w-full pl-5 pr-12 py-3 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-sm sm:text-base">
+                <span class="absolute right-4 top-5 text-slate-400">🔍</span>
             </div>
         </div>
 
-        <!-- Interactive Linux Terminal Module -->
-        <section class="mb-12 bg-slate-950 text-slate-100 rounded-2xl border border-slate-800 overflow-hidden shadow-2xl terminal-glow">
-            <div class="bg-slate-900 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
-                <div class="flex items-center space-x-2">
-                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                    <span class="text-xs text-slate-400 font-mono ml-2">interactive_linux_sandbox ~ guest@hub</span>
+        <!-- SIMULATORS INTERACTIVE DUAL COMPONENT VIEW -->
+        <section class="space-y-4">
+            <div class="flex justify-between items-center">
+                <h2 class="text-xl sm:text-2xl font-bold tracking-tight">🖥️ Dual-Environment Sandbox Simulators</h2>
+                <span class="text-xs text-slate-500 hidden sm:inline">Tip: Click maximize 🗖 button to expand either shell layout.</span>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+                
+                <!-- Linux Terminal Module Layout -->
+                <div id="linuxTerminalContainer" class="custom-card bg-slate-900 border border-slate-800 rounded-xl shadow-xl flex flex-col h-[400px] text-slate-100 transition-all duration-200">
+                    <!-- Top Window controls bar -->
+                    <div class="bg-slate-800 px-4 py-3 flex items-center justify-between border-b border-slate-700 rounded-t-xl">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-3 h-3 rounded-full bg-red-500 block"></span>
+                            <span class="w-3 h-3 rounded-full bg-yellow-500 block"></span>
+                            <span class="w-3 h-3 rounded-full bg-green-500 block"></span>
+                            <span class="text-xs text-slate-400 font-mono ml-2">root@academy-node:~</span>
+                        </div>
+                        <button onclick="toggleMaximize('linuxTerminalContainer')" class="text-slate-400 hover:text-white font-mono text-sm px-2 py-0.5 rounded border border-slate-600 hover:border-slate-400" title="Maximize Window">🗖</button>
+                    </div>
+                    <!-- Terminal dynamic stream console area -->
+                    <div id="linuxOutput" class="flex-grow p-4 overflow-y-auto font-mono text-xs sm:text-sm space-y-2 bg-slate-950">
+                        <div class="text-slate-400">Linux Environment Shell Simulator Node v24.04 LTS.</div>
+                        <div class="text-slate-400">Type <span class="text-cyan-400">help</span> to view available networking, tracking, and diagnostics binaries.</div>
+                    </div>
+                    <!-- Terminal input layout bar -->
+                    <div class="bg-slate-950 p-3 border-t border-slate-800 rounded-b-xl flex items-center space-x-2 font-mono text-xs sm:text-sm">
+                        <span class="text-emerald-400 font-bold">root@sandbox:~#</span>
+                        <input type="text" id="linuxInput" class="flex-grow bg-transparent text-slate-100 focus:outline-none border-none p-0 m-0" autocomplete="off">
+                    </div>
                 </div>
-                <span class="text-xs text-emerald-400 font-mono border border-emerald-500/30 px-2 py-0.5 rounded">Live Simulator</span>
-            </div>
-            <div class="p-6 font-mono text-sm h-64 overflow-y-auto space-y-2" id="terminalOutput">
-                <div class="text-slate-400">Welcome to the IT Hub Terminal Simulator. Type <span class="text-yellow-400">help</span> to see available mock commands (ls, cat, ip addr, git status, clear).</div>
-            </div>
-            <div class="bg-slate-900/50 px-6 py-3 border-t border-slate-800/60 flex items-center">
-                <span class="text-emerald-400 font-mono mr-2">guest@hub:~$</span>
-                <input type="text" id="terminalInput" class="w-full bg-transparent border-none outline-none text-emerald-400 font-mono focus:ring-0 p-0" autocomplete="off" autofocus>
+
+                <!-- Windows PowerShell Module Layout -->
+                <div id="windowsTerminalContainer" class="custom-card bg-sky-950 border border-sky-900 rounded-xl shadow-xl flex flex-col h-[400px] text-slate-100 transition-all duration-200">
+                    <!-- Top Window controls bar -->
+                    <div class="bg-sky-900 px-4 py-3 flex items-center justify-between border-b border-sky-800 rounded-t-xl">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-3 h-3 rounded-full bg-slate-400 block"></span>
+                            <span class="w-3 h-3 rounded-full bg-slate-400 block"></span>
+                            <span class="w-3 h-3 rounded-full bg-slate-400 block"></span>
+                            <span class="text-xs text-sky-200 font-mono ml-2">Windows PowerShell - Administrator</span>
+                        </div>
+                        <button onclick="toggleMaximize('windowsTerminalContainer')" class="text-sky-200 hover:text-white font-mono text-sm px-2 py-0.5 rounded border border-sky-700 hover:border-sky-500" title="Maximize Window">🗖</button>
+                    </div>
+                    <!-- Terminal dynamic stream console area -->
+                    <div id="windowsOutput" class="flex-grow p-4 overflow-y-auto font-mono text-xs sm:text-sm space-y-2 bg-[#012456]">
+                        <div class="text-sky-200">Windows PowerShell Console Environment. (C) Microsoft Corp.</div>
+                        <div class="text-sky-200">Type <span class="text-yellow-300">Get-Help</span> to view supported diagnostic cmdlets.</div>
+                    </div>
+                    <!-- Terminal input layout bar -->
+                    <div class="bg-[#012456] p-3 border-t border-sky-900 rounded-b-xl flex items-center space-x-2 font-mono text-xs sm:text-sm">
+                        <span class="text-white font-bold">PS C:\Users\Admin&gt;</span>
+                        <input type="text" id="windowsInput" class="flex-grow bg-transparent text-white focus:outline-none border-none p-0 m-0" autocomplete="off">
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <!-- Main Educational Content Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="topicsGrid">
-
-            <!-- Card 1: Network Subnetting Masterclass -->
-            <section class="card bg-white border border-gray-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between" data-search="networking subnetting ip address cidr masks subnets gateway hosts broadcast formulas">
-                <div>
-                    <div class="flex justify-between items-start mb-4">
-                        <h2 class="text-2xl font-bold tracking-tight">🌐 Advanced Subnetting & IP Design</h2>
-                        <span class="badge bg-emerald-50 text-emerald-700 text-xs font-semibold px-2.5 py-1 rounded-md">Networking</span>
+        <!-- Dynamic Responsive Core Information Syllabus Sections Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8" id="syllabusGrid">
+            
+            <!-- Section 1: Linux Admin Core -->
+            <section class="custom-card bg-white border border-slate-200 rounded-2xl p-4 sm:p-6 shadow-sm flex flex-col justify-between" data-search="linux administration system admin chmod chown cron job systemctl status logs triage infrastructure processes tools">
+                <div class="space-y-4">
+                    <div class="flex justify-between items-start">
+                        <h3 class="text-lg sm:text-xl font-bold tracking-tight">🐧 Linux Systems Administration</h3>
+                        <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-1 rounded-md">Kernel Core</span>
                     </div>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Breakdown of Classless Inter-Domain Routing (CIDR) logic and design math blueprints.</p>
+                    <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm">Process management, configuration matrices, file system permissions mapping, and triage pipeline mechanics.</p>
                     
-                    <div class="space-y-4">
-                        <div class="bg-slate-50 dark:bg-slate-800/50 p-3 rounded-xl border border-gray-100 dark:border-slate-800">
-                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Core Subnetting Formulas</h3>
-                            <ul class="text-xs space-y-1 font-mono text-blue-600 dark:text-blue-400">
-                                <li>Total Subnets = 2^n (where n = borrowed host bits)</li>
-                                <li>Usable Hosts/Subnet = (2^h) - 2 (where h = remaining host bits)</li>
+                    <div class="space-y-3">
+                        <div>
+                            <span class="block text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Essential System Operations Matrix</span>
+                            <pre class="mt-1 p-2 bg-slate-900 text-emerald-400 border border-slate-800 rounded text-xs overflow-x-auto whitespace-pre">
+systemctl status nginx     # View health status of web backend stack
+journalctl -f -u ssh       # Stream historical login auth records log streams
+ss -tulpn                  # Map all current active socket configurations
+lsof -i :8080              # Isolate PID controlling web port 8080</pre>
+                        </div>
+                        <div>
+                            <span class="block text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Automation: Crontab Configuration Layout</span>
+                            <div class="text-xs font-mono bg-slate-100 dark:bg-slate-800 p-2 rounded border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">
+                                <code>* * * * * [command_to_execute]</code><br>
+                                Min ➔ Hour ➔ Day of Month ➔ Month ➔ Day of Week
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Git Fundamentals -->
+            <section class="custom-card bg-white border border-slate-200 rounded-2xl p-4 sm:p-6 shadow-sm flex flex-col justify-between" data-search="git github commands version control repository branching commit merge conflict rebase push fetch remote tracking stage">
+                <div class="space-y-4">
+                    <div class="flex justify-between items-start">
+                        <h3 class="text-lg sm:text-xl font-bold tracking-tight">🐙 Git Pipelines & Version Control</h3>
+                        <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-1 rounded-md">VCS Tools</span>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm">Local staging loops, architectural branching, state reconstruction maneuvers, and remote collaborative operations.</p>
+                    
+                    <div class="space-y-3">
+                        <div>
+                            <span class="block text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Production Push Sequence</span>
+                            <pre class="mt-1 p-2 bg-slate-900 text-emerald-400 border border-slate-800 rounded text-xs overflow-x-auto whitespace-pre">
+git status                 # Inspect current dynamic working tree modifications
+git add .                  # Index target file updates into local staging tree
+git commit -m "docs: structural update"  # Lock file tree snapshot into log history
+git push origin main       # Transport state changes to upstream main tree</pre>
+                        </div>
+                        <div>
+                            <span class="block text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Branching & Recovery Frameworks</span>
+                            <pre class="mt-1 p-2 bg-slate-900 text-emerald-400 border border-slate-800 rounded text-xs overflow-x-auto whitespace-pre">
+git checkout -b feature/auth # Instant target deployment branch separation
+git reset --soft HEAD~1      # Roll back target log commit, keeping your file work
+git log --oneline --graph    # Render readable tree layout of repository tags</pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Cyber Security Paradigms -->
+            <section class="custom-card bg-white border border-slate-200 rounded-2xl p-4 sm:p-6 shadow-sm flex flex-col justify-between" data-search="cyber security defenses cia triad injection xss sanitization defense vulnerabilities encryption hash owasp firewall">
+                <div class="space-y-4">
+                    <div class="flex justify-between items-start">
+                        <h3 class="text-lg sm:text-xl font-bold tracking-tight">🛡️ Defensive Cybersecurity Fundamentals</h3>
+                        <span class="bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-1 rounded-md">App Security</span>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm">Foundational threat models, mitigation models targeting OWASP vectors, and cryptographic verification processes.</p>
+                    
+                    <div class="space-y-3">
+                        <div>
+                            <span class="block text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">OWASP Web Mitigation Strategy Manual</span>
+                            <ul class="text-xs space-y-1.5 list-disc pl-4 text-slate-700 dark:text-slate-300">
+                                <li><strong>SQL Injection (SQLi):</strong> Avoid raw query building. Always leverage parameterized object-relational mapping structures.</li>
+                                <li><strong>Cross-Site Scripting (XSS):</strong> Sanitize raw input feeds, apply output escaping systems, and configure restrictive Content Security Policies.</li>
+                                <li><strong>Broken Authentication:</strong> Enforce mandatory Multi-Factor Authentication (MFA) parameters and block brute-force attempts.</li>
                             </ul>
                         </div>
-                        
                         <div>
-                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Practical Subnetting Walkthrough</h3>
-                            <div class="text-xs space-y-2 text-gray-600 dark:text-gray-300">
-                                <p>Given Network Address Profile: <strong class="text-slate-900 dark:text-white">192.168.1.0/26</strong></p>
-                                <ul class="list-disc pl-4 space-y-1">
-                                    <li><strong>Subnet Mask:</strong> 255.255.255.192 (Binary: 11000000 in last octet)</li>
-                                    <li><strong>Block Increment Size:</strong> 256 - 192 = 64 addresses per boundary.</li>
-                                    <li><strong>Network ID:</strong> 192.168.1.0</li>
-                                    <li><strong>Usable IP Range:</strong> 192.168.1.1 to 192.168.1.62</li>
-                                    <li><strong>Broadcast ID:</strong> 192.168.1.63</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- Live interactive subnetting calculator component -->
-                        <div class="pt-2 border-t border-gray-100 dark:border-slate-800">
-                            <h3 class="text-xs font-bold uppercase tracking-wider text-yellow-500 mb-2">Live Subnet Block Discovery Sandbox</h3>
-                            <div class="flex space-x-2">
-                                <select id="cidrSelect" class="text-xs p-2 rounded-lg border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 w-full">
-                                    <option value="24">/24 (256 Total IPs - Mask: .0)</option>
-                                    <option value="25">/25 (128 Total IPs - Mask: .128)</option>
-                                    <option value="26" selected>/26 (64 Total IPs - Mask: .192)</option>
-                                    <option value="27">/27 (32 Total IPs - Mask: .224)</option>
-                                </select>
-                                <button onclick="calculateSubnet()" class="bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs px-4 py-2 rounded-lg transition">Analyze</button>
-                            </div>
-                            <div id="subnetCalcResult" class="mt-2 text-xs font-mono text-emerald-600 dark:text-emerald-400 hidden bg-emerald-500/10 p-2 rounded border border-emerald-500/20"></div>
+                            <span class="block text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">The Core Principles Blueprint</span>
+                            <p class="text-xs italic text-slate-600 dark:text-slate-400 mt-1">"Principle of Least Privilege (PoLP): Grant identity entities the exact absolute minimum access scope necessary to fulfill functional job tickets."</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Card 2: Linux Administration & Core Diagnostics -->
-            <section class="card bg-white border border-gray-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between" data-search="linux system admin triage network tools netstat ss ip systemd permissions syslog tar crontab">
-                <div>
-                    <div class="flex justify-between items-start mb-4">
-                        <h2 class="text-2xl font-bold tracking-tight">🐧 Production Linux Administration</h2>
-                        <span class="badge bg-blue-50 text-blue-700 text-xs font-semibold px-2.5 py-1 rounded-md">Sysadmin</span>
+            <!-- Section 4: Networking Frameworks & Subnetting -->
+            <section class="custom-card bg-white border border-slate-200 rounded-2xl p-4 sm:p-6 shadow-sm flex flex-col justify-between" data-search="networking subnets cidr mask address calculations routing osi layers models tcp ip handshake gateway">
+                <div class="space-y-4">
+                    <div class="flex justify-between items-start">
+                        <h3 class="text-lg sm:text-xl font-bold tracking-tight">🌐 Networking Theories & Classless Subnetting</h3>
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-semibold px-2.5 py-1 rounded-md">L3 Routing</span>
                     </div>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Deep inspection commands, job schedulers, and infrastructural connection diagnosis tools.</p>
+                    <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm">OSI protocol structures, state transitions within the three-way handshake, and Classless Inter-Domain Routing mechanics.</p>
                     
-                    <div class="space-y-4">
+                    <div class="space-y-3">
                         <div>
-                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Advanced Network Port Triage</h3>
-                            <pre class="p-2 bg-gray-50 border border-gray-100 rounded text-xs text-green-600 dark:text-green-400 font-mono">
-ss -tulpn                  # Modern replacement for netstat; show open listening sockets
-ip -br addr show           # Brief overview of network interfaces and state
-tcpdump -i eth0 icmp       # Intercept live raw network packet streams on an interface</pre>
-                        </div>
-                        <div>
-                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Systemd & Routine Schedulers</h3>
-                            <pre class="p-2 bg-gray-50 border border-gray-100 rounded text-xs text-green-600 dark:text-green-400 font-mono">
-systemctl link unit.service # Hook custom standalone daemon into path execution
-crontab -e                 # Access automation file script configs
-# Minute Hour Day Month DayOfWeek Command
-0 2 * * * /backup.sh       # Executest at exactly 02:00 AM daily</pre>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Card 3: Enterprise GitHub Workflow Ecosystem -->
-            <section class="card bg-white border border-gray-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between" data-search="github git rebase merge conflict remote upstream cherrypick logs hash tag hooks">
-                <div>
-                    <div class="flex justify-between items-start mb-4">
-                        <h2 class="text-2xl font-bold tracking-tight">🐙 Enterprise Git Pipelines</h2>
-                        <span class="badge bg-purple-50 text-purple-700 text-xs font-semibold px-2.5 py-1 rounded-md">Version Control</span>
-                    </div>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Handling state reconciliation, remote branch synchronizations, and target commits.</p>
-                    
-                    <div class="space-y-4">
-                        <div>
-                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Rebase vs Merge Strategies</h3>
-                            <p class="text-xs text-gray-600 dark:text-gray-400 mb-2">Use merge to maintain true history timelines. Use rebase to create straight linear commits.</p>
-                            <pre class="p-2 bg-gray-50 border border-gray-100 rounded text-xs text-green-600 dark:text-green-400 font-mono">
-git fetch upstream          # Pull upstream project change frameworks
-git checkout main
-git rebase upstream/main    # Reapply local commits on top of current upstream state</pre>
-                        </div>
-                        <div>
-                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Target Extraction & Inspections</h3>
-                            <pre class="p-2 bg-gray-50 border border-gray-100 rounded text-xs text-green-600 dark:text-green-400 font-mono">
-git cherry-pick a1b2c3d    # Select individual commit hash from branch
-git log --oneline --graph  # Render ASCII branch history relationship structure</pre>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Card 4: Cyber Security Architecture & Vectors -->
-            <section class="card bg-white border border-gray-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between" data-search="cyber security owasp top 10 xss mitigation sql injection hashing salting waf firewall ips ids">
-                <div>
-                    <div class="flex justify-between items-start mb-4">
-                        <h2 class="text-2xl font-bold tracking-tight">🛡️ Cyber Security Mitigation Matrix</h2>
-                        <span class="badge bg-red-50 text-red-700 text-xs font-semibold px-2.5 py-1 rounded-md">Security</span>
-                    </div>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Defense patterns mapped against the vulnerabilities in the OWASP Top 10 framework.</p>
-                    
-                    <div class="space-y-4">
-                        <div>
-                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">OWASP Risk Strategies</h3>
-                            <div class="space-y-2">
-                                <div class="p-2 bg-red-500/5 border border-red-500/20 rounded">
-                                    <span class="text-xs font-bold text-red-600 block">SQL Injection (SQLi)</span>
-                                    <p class="text-xs text-gray-600 dark:text-gray-400">Malicious queries escape input forms. <strong class="text-green-600">Defense:</strong> Use parameterized queries and prepared statements exclusively.</p>
-                                </div>
-                                <div class="p-2 bg-red-500/5 border border-red-500/20 rounded">
-                                    <span class="text-xs font-bold text-red-600 block">Cross-Site Scripting (XSS)</span>
-                                    <p class="text-xs text-gray-600 dark:text-gray-400">Script insertion execution inside users' browsers. <strong class="text-green-600">Defense:</strong> Context-aware output encoding and strict Content Security Policies (CSP).</p>
-                                </div>
+                            <span class="block text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">CIDR Subnet Math Reference Cheat-Sheet</span>
+                            <div class="overflow-x-auto mt-1">
+                                <table class="w-full text-[11px] font-mono border-collapse border border-slate-200 dark:border-slate-700 text-left">
+                                    <thead>
+                                        <tr class="bg-slate-100 dark:bg-slate-800">
+                                            <th class="p-1 border border-slate-200 dark:border-slate-700">CIDR Block</th>
+                                            <th class="p-1 border border-slate-200 dark:border-slate-700">Subnet Mask</th>
+                                            <th class="p-1 border border-slate-200 dark:border-slate-700">Total IP Allocation</th>
+                                            <th class="p-1 border border-slate-200 dark:border-slate-700">Usable Payload Hosts</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+                                        <tr><td class="p-1">/24</td><td class="p-1">255.255.255.0</td><td class="p-1">256</td><td class="p-1">254 (Allocates 1 Network, 1 Broadcast)</td></tr>
+                                        <tr><td class="p-1">/25</td><td class="p-1">255.255.255.128</td><td class="p-1">128</td><td class="p-1">126</td></tr>
+                                        <tr><td class="p-1">/26</td><td class="p-1">255.255.255.192</td><td class="p-1">64</td><td class="p-1">62</td></tr>
+                                        <tr><td class="p-1">/27</td><td class="p-1">255.255.255.224</td><td class="p-1">32</td><td class="p-1">30</td></tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                         <div>
-                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Data Storage Governance</h3>
-                            <p class="text-xs text-gray-500">Never store raw cleartext passwords. Always run items through cryptographic functions using unique salts per entry:</p>
-                            <pre class="mt-1 p-2 bg-gray-50 border border-gray-100 rounded text-xs text-green-600 dark:text-green-400 font-mono">Password + Unique Cryptographic Salt ➔ Argon2id / bcrypt ➔ Safe Storage Hash</pre>
+                            <span class="block text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">TCP Handshake Flag State Loop</span>
+                            <div class="text-xs bg-slate-900 text-cyan-400 p-2 rounded font-mono mt-1 text-center whitespace-pre overflow-x-auto">
+[Client Terminal]  --- SYN Flag Packet --->  [Target Host Node]
+[Client Terminal]  <--- SYN-ACK Packet ---  [Target Host Node]
+[Client Terminal]  --- ACK Setup Packet ->  [Target Host Node]</div>
                         </div>
                     </div>
                 </div>
@@ -213,126 +237,132 @@ git log --oneline --graph  # Render ASCII branch history relationship structure<
         </div>
     </main>
 
-    <footer class="mt-auto border-t border-gray-200 dark:border-slate-800 py-6 text-center text-xs text-gray-500">
+    <!-- Global System Footer Layout -->
+    <footer class="mt-auto border-t border-slate-200 dark:border-slate-800 py-6 text-center text-xs text-slate-500">
         <div class="max-w-7xl mx-auto px-4">
-            <p>Designed for fast deployment via GitHub Pages. Pure vanilla JavaScript interactions.</p>
+            <p>Static Educational Core Module Application. Zero Framework Compiling Dependencies Required.</p>
         </div>
     </footer>
 
+    <!-- Interactive Simulator Runtime & Search System Controller Operations Scripts -->
     <script>
-        // Theme switching engine
-        const themeToggleBtn = document.getElementById('themeToggle');
+        // Global State & System Preferences Initialization Engine
+        const toggleBtn = document.getElementById('themeToggle');
         const themeIcon = document.getElementById('themeIcon');
         
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
             document.body.classList.add('dark-mode');
             themeIcon.textContent = '☀️';
-        } else {
-            document.documentElement.classList.remove('dark');
-            document.body.classList.remove('dark-mode');
-            themeIcon.textContent = '🌙';
         }
 
-        themeToggleBtn.addEventListener('click', function() {
+        toggleBtn.addEventListener('click', () => {
             if (document.documentElement.classList.contains('dark')) {
                 document.documentElement.classList.remove('dark');
                 document.body.classList.remove('dark-mode');
-                localStorage.setItem('color-theme', 'light');
+                localStorage.setItem('theme', 'light');
                 themeIcon.textContent = '🌙';
             } else {
                 document.documentElement.classList.add('dark');
                 document.body.classList.add('dark-mode');
-                localStorage.setItem('color-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
                 themeIcon.textContent = '☀️';
             }
         });
 
-        // Search engine filter logic
+        // Maximize/Minimize Component UI Controller
+        function toggleMaximize(containerId) {
+            const el = document.getElementById(containerId);
+            el.classList.toggle('maximized');
+            if (containerId === 'linuxTerminalContainer') document.getElementById('linuxInput').focus();
+            if (containerId === 'windowsTerminalContainer') document.getElementById('windowsInput').focus();
+        }
+
+        // --- FIXED COMPREHENSIVE SEARCH ENGINE ---
         document.getElementById('searchInput').addEventListener('input', function(e) {
             const query = e.target.value.toLowerCase().trim();
-            const cards = document.querySelectorAll('#topicsGrid section');
+            const cards = document.querySelectorAll('#syllabusGrid section');
             
             cards.forEach(card => {
-                const searchSpace = card.getAttribute('data-search').toLowerCase();
-                const contentText = card.innerText.toLowerCase();
-                if (searchSpace.includes(query) || contentText.includes(query)) {
-                    card.style.display = 'flex';
+                const searchSpaceAttribute = card.getAttribute('data-search') ? card.getAttribute('data-search').toLowerCase() : '';
+                const cardInnerContentText = card.innerText.toLowerCase();
+                
+                if (searchSpaceAttribute.includes(query) || cardInnerContentText.includes(query)) {
+                    card.style.setProperty('display', 'flex', 'important');
                 } else {
-                    card.style.display = 'none';
+                    card.style.setProperty('display', 'none', 'important');
                 }
             });
         });
 
-        // Live Subnetting Interactive sandbox logic
-        function calculateSubnet() {
-            const cidr = document.getElementById('cidrSelect').value;
-            const resDiv = document.getElementById('subnetCalcResult');
-            resDiv.classList.remove('hidden');
-            
-            let totalIps = Math.pow(2, 32 - parseInt(cidr));
-            let usableHosts = totalIps - 2;
-            let maskEnd = 256 - totalIps;
-            if (cidr == "24") maskEnd = 0;
-            
-            resDiv.innerHTML = `➔ Analysis for /${cidr}:<br>` + 
-                              `• Subnet Mask String: 255.255.255.${maskEnd}<br>` + 
-                              `• Structural Footprint Size: ${totalIps} Total Addresses<br>` + 
-                              `• Allocatable Payload Allocation: ${usableHosts} Usable Nodes/Hosts`;
-        }
+        // --- LINUX SHELL EMULATION COMMAND ENGINE ---
+        const linuxInput = document.getElementById('linuxInput');
+        const linuxOutput = document.getElementById('linuxOutput');
 
-        // Live Terminal Simulation Command Logic Core
-        const termInput = document.getElementById('terminalInput');
-        const termOutput = document.getElementById('terminalOutput');
+        const linuxCommands = {
+            'help': 'Available commands: ls, cat info.txt, systemctl status nginx, ss -tulpn, clear',
+            'ls': 'total 8\n-rw-r--r-- 1 root root 428 Aug 20 21:21 info.txt',
+            'cat info.txt': '[SYSTEM DEPLOYMENT INFORMATION]\nWelcome to the Linux Sandbox. Practice checking system services or network socket listening sockets using the available helper commands.',
+            'systemctl status nginx': '● nginx.service - High Performance Web Server\n   Loaded: loaded (/lib/systemd/system/nginx.service; enabled)\n   Active: active (running) since Thu 2026-08-20 11:14:02 UTC\n   Main PID: 1402 (nginx)',
+            'ss -tulpn': 'Netid  State   Recv-Q  Send-Q  Local Address:Port  Process\ntcp    LISTEN  0       128     0.0.0.0:80          users:(("nginx",pid=1402,fd=6))\ntcp    LISTEN  0       128     0.0.0.0:22          users:(("sshd",pid=842,fd=3))',
+            'clear': 'CLEAR'
+        };
 
-        termInput.addEventListener('keydown', function(e) {
+        linuxInput.addEventListener('keydown', function(e) {
             if (e.key === 'Enter') {
-                const cmdText = termInput.value.trim();
-                if (!cmdText) return;
-                
-                // Print command trace back to terminal window line
-                const cmdLine = document.createElement('div');
-                cmdLine.innerHTML = \`<span class="text-emerald-400">guest@hub:~$</span> <span class="text-white">\${escapeHtml(cmdText)}</span>\`;
-                termOutput.appendChild(cmdLine);
-                
-                // Parse standard terminal inputs
-                const normalizedCmd = cmdText.toLowerCase();
-                const respLine = document.createElement('div');
-                respLine.className = 'text-slate-300 pl-2 border-l border-slate-700 py-0.5';
-                
-                if (normalizedCmd === 'help') {
-                    respLine.innerHTML = "Available simulated instructions:<br>" +
-                                         "• <span class='text-yellow-400'>ls</span> - List configuration objects inside virtual path directory.<br>" +
-                                         "• <span class='text-yellow-400'>cat info.txt</span> - Display baseline resource payloads.<br>" +
-                                         "• <span class='text-yellow-400'>ip addr</span> - View loopback and ethernet structural addresses.<br>" +
-                                         "• <span class='text-yellow-400'>git status</span> - Run working workspace state diagnostics.<br>" +
-                                         "• <span class='text-yellow-400'>clear</span> - Purge logs from view display memory.";
-                } else if (normalizedCmd === 'ls') {
-                    respLine.innerHTML = "<span class='text-blue-400 font-bold'>network_configs/</span> &nbsp;&nbsp; <span class='text-blue-400 font-bold'>git_repos/</span> &nbsp;&nbsp; info.txt &nbsp;&nbsp; security_audit.log";
-                } else if (normalizedCmd === 'cat info.txt') {
-                    respLine.innerText = "IT Hub Terminal Core v2.4.0. Operational environment running clean structural sandboxes.";
-                } else if (normalizedCmd === 'ip addr') {
-                    respLine.innerHTML = "1: lo: &lt;LOOPBACK,UP&gt; mtu 65536<br>&nbsp;&nbsp;&nbsp;&nbsp;inet 127.0.0.1/8 scope host lo<br>" +
-                                         "2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500<br>&nbsp;&nbsp;&nbsp;&nbsp;inet 192.168.1.15/24 brd 192.168.1.255 scope global eth0";
-                } else if (normalizedCmd === 'git status') {
-                    respLine.innerHTML = "On branch main<br>Your branch is up to date with 'origin/main'.<br>nothing to commit, working tree clean";
-                } else if (normalizedCmd === 'clear') {
-                    termOutput.innerHTML = '';
-                    termInput.value = '';
-                    return;
-                } else {
-                    respLine.innerHTML = \`<span class="text-red-400">bash: \${escapeHtml(cmdText)}: command not found</span>\`;
+                const rawCmd = this.value;
+                const cmd = rawCmd.trim().toLowerCase();
+                this.value = '';
+
+                const echoLine = document.createElement('div');
+                echoLine.innerHTML = `<span class="text-emerald-400 font-bold">root@sandbox:~#</span> <span class="text-white">${rawCmd}</span>`;
+                linuxOutput.appendChild(echoLine);
+
+                if (cmd === 'clear') {
+                    linuxOutput.innerHTML = '';
+                } else if (cmd !== '') {
+                    const responseLine = document.createElement('div');
+                    responseLine.className = 'text-slate-300 whitespace-pre-wrap mt-0.5 mb-2';
+                    responseLine.textContent = linuxCommands[cmd] || `bash: command not found: ${rawCmd}. Type 'help' to review simulated commands.`;
+                    linuxOutput.appendChild(responseLine);
                 }
-                
-                termOutput.appendChild(respLine);
-                termInput.value = '';
-                termOutput.scrollTop = termOutput.scrollHeight;
+                linuxOutput.scrollTop = linuxOutput.scrollHeight;
             }
         });
 
-        function escapeHtml(str) {
-            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
-        }
+        // --- WINDOWS POWERSHELL EMULATION COMMAND ENGINE ---
+        const windowsInput = document.getElementById('windowsInput');
+        const windowsOutput = document.getElementById('windowsOutput');
+
+        const windowsCommands = {
+            'get-help': 'Supported Cmdlets: Get-Service, Get-NetIPAddress, Clear-Host, Test-NetConnection',
+            'get-service': 'Status   Name               DisplayName\n------   ----               -----------\nRunning  wuauserv           Windows Update\nRunning  W3SVC              World Wide Web Publishing Service\nStopped  ssh-agent          OpenSSH Authentication Agent',
+            'get-netipaddress': 'IPAddress         : 192.168.1.45\nInterfaceAlias    : Ethernet0\nAddressFamily     : IPv4\nIPAddress         : fe80::d41d:8cd9%4\nInterfaceAlias    : Ethernet0\nAddressFamily     : IPv6',
+            'test-netconnection': 'ComputerName           : localhost\nRemoteAddress          : 127.0.0.1\nInterfaceAlias         : Loopback Pseudo-Interface 1\nSourceAddress          : 127.0.0.1\nTcpTestSucceeded       : True',
+            'clear-host': 'CLEAR'
+        };
+
+        windowsInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                const rawCmd = this.value;
+                const cmd = rawCmd.trim().toLowerCase();
+                this.value = '';
+
+                const echoLine = document.createElement('div');
+                echoLine.innerHTML = `<span class="text-white font-bold">PS C:\Users\Admin&gt;</span> <span class="text-white">${rawCmd}</span>`;
+                windowsOutput.appendChild(echoLine);
+
+                if (cmd === 'clear-host' || cmd === 'cls') {
+                    windowsOutput.innerHTML = '';
+                } else if (cmd !== '') {
+                    const responseLine = document.createElement('div');
+                    responseLine.className = 'text-sky-100 whitespace-pre-wrap mt-0.5 mb-2';
+                    responseLine.textContent = windowsCommands[cmd] || `'${rawCmd}' is not recognized as a cmdlet, function, or operable program. Type 'Get-Help' for valid selections.`;
+                    windowsOutput.appendChild(responseLine);
+                }
+                windowsOutput.scrollTop = windowsOutput.scrollHeight;
+            }
+        });
     </script>
 </body>
 </html>
