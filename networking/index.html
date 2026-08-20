@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Networking Architecture Track</title>
+    <script src="https://tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <script>tailwind.config = { darkMode: 'class' }</script>
+</head>
+<body class="min-h-screen flex flex-col">
+    <nav class="sticky top-0 z-40 custom-card backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center space-x-2 font-bold text-xl tracking-tight text-blue-600">
+                <span>🌐 Networking Track</span>
+            </a>
+            <div class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="../index.html" class="hover:text-blue-500">Dashboard</a>
+                <a href="../linux/index.html" class="hover:text-blue-500">Linux SysAdmin</a>
+                <a href="../cybersecurity/index.html" class="hover:text-blue-500">Security</a>
+                <a href="../simulators/index.html" class="text-emerald-500 font-bold">Launch Terminals</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow max-w-5xl w-full mx-auto px-4 py-8">
+        <div class="space-y-8">
+            <!-- OSI Reference Section -->
+            <section class="custom-card p-6 rounded-2xl shadow-sm">
+                <h2 class="text-2xl font-bold tracking-tight mb-2">OSI Model Layer Decoupling</h2>
+                <p class="text-sm text-slate-500 mb-4">Memorize using this helpful shortcut sentence: <strong>"Please Do Not Throw Sausage Pizza Away"</strong></p>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead>
+                            <tr class="border-b bg-slate-50 dark:bg-slate-800 font-bold">
+                                <th class="p-2">Layer Level</th>
+                                <th class="p-2">Name</th>
+                                <th class="p-2">Data Form Unit</th>
+                                <th class="p-2">Example Protocols</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y">
+                            <tr><td class="p-2 font-bold">L7</td><td class="p-2">Application</td><td class="p-2">Payload Data</td><td class="p-2 text-blue-500">HTTP, DNS, SMTP, FTP</td></tr>
+                            <tr><td class="p-2 font-bold">L4</td><td class="p-2">Transport</td><td class="p-2">Segments (TCP) / Datagrams (UDP)</td><td class="p-2 text-blue-500">TCP, UDP (Port tracking)</td></tr>
+                            <tr><td class="p-2 font-bold">L3</td><td class="p-2">Network</td><td class="p-2">Packets</td><td class="p-2 text-blue-500">IP, ICMP, OSPF router paths</td></tr>
+                            <tr><td class="p-2 font-bold">L2</td><td class="p-2">Data Link</td><td class="p-2">Frames</td><td class="p-2 text-blue-500">Ethernet, MAC Address switches</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Subnetting Calculator Block -->
+            <section class="custom-card p-6 rounded-2xl shadow-sm">
+                <h2 class="text-2xl font-bold tracking-tight mb-2">Interactive Subnet Matrix Checker</h2>
+                <p class="text-sm text-slate-500 mb-4">Enter a Class C network base template IP to dynamically calculate default network boundaries.</p>
+                <div class="flex flex-col sm:flex-row gap-4 mb-6">
+                    <input type="text" id="ipInput" value="192.168.1.0" class="px-4 py-2 border rounded-xl bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 flex-grow">
+                    <button onclick="computeSubnets()" class="px-6 py-2 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition">Compute Matrix</button>
+                </div>
+                <div class="overflow-x-auto text-xs font-mono" id="subnetOutput">
+                    <!-- Algorithmic insertion -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        function computeSubnets() {
+            const base = document.getElementById('ipInput').value.trim();
+            const prefixes =;
+            let html = `<table class="w-full text-left border-collapse"><tr class="border-b bg-slate-800 text-white">
+                <th class="p-2">CIDR Block</th><th class="p-2">Subnet Mask</th><th class="p-2">Total IP Footprint</th><th class="p-2">Usable Host Scope</th></tr>`;
+            
+            prefixes.forEach(p => {
+                let ips = Math.pow(2, 32 - p);
+                let mask = p===24?"255.255.255.0":p===25?"255.255.255.128":p===26?"255.255.255.192":"255.255.255.224";
+                html += `<tr class="border-b">
+                    <td class="p-2 font-bold text-blue-500">${base}/${p}</td>
+                    <td class="p-2">${mask}</td>
+                    <td class="p-2">${ips}</td>
+                    <td class="p-2 text-green-600 font-bold">${ips - 2} usable hosts</td>
+                </tr>`;
+            });
+            html += `</table>`;
+            document.getElementById('subnetOutput').innerHTML = html;
+        }
+        window.onload = computeSubnets;
+    </script>
+</body>
+</html>
