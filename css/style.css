@@ -1,6 +1,6 @@
-/* Custom core styles extending Tailwind */
 @import url('https://googleapis.com');
 
+/* Dynamic Color Framework Definitions */
 :root {
     --bg-primary: #f8fafc;
     --bg-card: #ffffff;
@@ -19,8 +19,8 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
+    background-color: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
@@ -29,11 +29,11 @@ code, pre {
 }
 
 .custom-card {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-color) !important;
 }
 
-/* Simulator styles */
+/* Fullscreen utility mappings for the dual simulators */
 .terminal-fullscreen {
     position: fixed !important;
     top: 0 !important;
