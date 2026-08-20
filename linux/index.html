@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux System Admin Track</title>
+    <script src="https://tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <script>tailwind.config = { darkMode: 'class' }</script>
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- Navbar (Relative URLs fix) -->
+    <nav class="sticky top-0 z-40 custom-card backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center space-x-2 font-bold text-xl tracking-tight text-blue-600">
+                <span>🐧 Linux Core Track</span>
+            </a>
+            <div class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="../index.html" class="hover:text-blue-500">Dashboard</a>
+                <a href="../networking/index.html" class="hover:text-blue-500">Networking</a>
+                <a href="../cybersecurity/index.html" class="hover:text-blue-500">Security</a>
+                <a href="../github/index.html" class="hover:text-blue-500">Git</a>
+                <a href="../simulators/index.html" class="text-emerald-500 font-bold">Launch Terminals</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Module Core Content -->
+    <main class="flex-grow max-w-5xl w-full mx-auto px-4 py-8">
+        <!-- Live Module Search Utility -->
+        <div class="mb-8">
+            <input type="text" id="moduleSearch" placeholder="Filter current page concepts..." class="w-full px-4 py-2 border rounded-xl bg-white dark:bg-slate-800 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+
+        <div class="space-y-8" id="contentBlock">
+            <section class="custom-card p-6 rounded-2xl shadow-sm" data-keyword="chmod chown permission execution access octal">
+                <h2 class="text-2xl font-bold tracking-tight mb-2">1. The Absolute Linux Permission Blueprint</h2>
+                <p class="text-sm text-slate-500 mb-4">Every file entity maps down to three user buckets: Owner (u), Group (g), and Others (o). Values are assigned using octal numeric values: Read (4), Write (2), and Execute (1).</p>
+                <pre class="p-3 bg-slate-900 text-green-400 rounded-xl text-xs overflow-x-auto">chmod 755 deployment-engine.sh # Owner: rwx (4+2+1=7) | Group/Others: r-x (4+1=5)</pre>
+            </section>
+
+            <section class="custom-card p-6 rounded-2xl shadow-sm" data-keyword="ps top kill process triage telemetry lsof ports">
+                <h2 class="text-2xl font-bold tracking-tight mb-2">2. Runtime Process Telemetry Triage</h2>
+                <p class="text-sm text-slate-500 mb-4">Quick shortcuts to trace system processes, investigate locked files, and manage background jobs.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-mono">
+                    <div class="p-3 bg-slate-900 text-slate-300 rounded-xl">
+                        <span class="text-cyan-400"># Check port usage</span><br>lsof -i :8080
+                    </div>
+                    <div class="p-3 bg-slate-900 text-slate-300 rounded-xl">
+                        <span class="text-cyan-400"># Track process resource spikes</span><br>ps aux --sort=-%cpu | head -n 5
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('moduleSearch').addEventListener('input', function(e){
+            const query = e.target.value.toLowerCase().trim();
+            document.querySelectorAll('#contentBlock section').forEach(sect => {
+                const searchTxt = sect.getAttribute('data-keyword').toLowerCase() + sect.innerText.toLowerCase();
+                sect.style.setProperty('display', searchTxt.includes(query) ? 'block' : 'none', 'important');
+            });
+        });
+    </script>
+</body>
+</html>
