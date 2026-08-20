@@ -3,88 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Networking Architecture Track</title>
+    <title>Networking Architecture Track & Subnet Sandbox</title>
     <script src="https://tailwindcss.com"></script>
-    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        @import url('https://googleapis.com');
+        :root { --bg: #f8fafc; --card: #ffffff; --text: #0f172a; --border: #e2e8f0; }
+        .dark { --bg: #0f172a; --card: #1e293b; --text: #f8fafc; --border: #334155; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); transition: all 0.2s ease; }
+        .custom-card { background-color: var(--card); border: 1px solid var(--border); }
+        code, pre { font-family: 'JetBrains+Mono', monospace; }
+    </style>
     <script>tailwind.config = { darkMode: 'class' }</script>
 </head>
 <body class="min-h-screen flex flex-col">
+
     <nav class="sticky top-0 z-40 custom-card backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <a href="../index.html" class="flex items-center space-x-2 font-bold text-xl tracking-tight text-blue-600">
-                <span>🌐 Networking Track</span>
+                <span>🌐 Networking Core Track</span>
             </a>
-            <div class="hidden md:flex space-x-6 text-sm font-medium">
-                <a href="../index.html" class="hover:text-blue-500">Dashboard</a>
-                <a href="../linux/index.html" class="hover:text-blue-500">Linux SysAdmin</a>
-                <a href="../cybersecurity/index.html" class="hover:text-blue-500">Security</a>
-                <a href="../simulators/index.html" class="text-emerald-500 font-bold">Launch Terminals</a>
+            <div class="space-x-4 text-sm font-medium">
+                <a href="../index.html" class="hover:text-blue-500 transition">Dashboard</a>
+                <a href="../cybersecurity/index.html" class="hover:text-blue-500 transition">Security</a>
+                <a href="../github/index.html" class="hover:text-blue-500 transition">Git</a>
             </div>
+            <button id="themeToggle" class="p-2 rounded-lg bg-gray-100 dark:bg-slate-800 text-lg">🌙</button>
         </div>
     </nav>
 
-    <main class="flex-grow max-w-5xl w-full mx-auto px-4 py-8">
-        <div class="space-y-8">
-            <!-- OSI Reference Section -->
+    <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 space-y-8">
             <section class="custom-card p-6 rounded-2xl shadow-sm">
-                <h2 class="text-2xl font-bold tracking-tight mb-2">OSI Model Layer Decoupling</h2>
-                <p class="text-sm text-slate-500 mb-4">Memorize using this helpful shortcut sentence: <strong>"Please Do Not Throw Sausage Pizza Away"</strong></p>
-                <div class="overflow-x-auto">
+                <h2 class="text-2xl font-bold tracking-tight mb-2">OSI Reference Model Layer Framing</h2>
+                <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Mnemonic Shortcut: <strong class="text-blue-600">"Please Do Not Throw Sausage Pizza Away"</strong></p>
+                <div class="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700">
                     <table class="w-full text-left text-xs border-collapse">
                         <thead>
-                            <tr class="border-b bg-slate-50 dark:bg-slate-800 font-bold">
-                                <th class="p-2">Layer Level</th>
-                                <th class="p-2">Name</th>
-                                <th class="p-2">Data Form Unit</th>
-                                <th class="p-2">Example Protocols</th>
+                            <tr class="bg-slate-100 dark:bg-slate-800 font-bold border-b border-slate-200 dark:border-slate-700">
+                                <th class="p-3">Layer</th><th class="p-3">Name</th><th class="p-3">Data Unit</th><th class="p-3">Protocols & Hardware</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y">
-                            <tr><td class="p-2 font-bold">L7</td><td class="p-2">Application</td><td class="p-2">Payload Data</td><td class="p-2 text-blue-500">HTTP, DNS, SMTP, FTP</td></tr>
-                            <tr><td class="p-2 font-bold">L4</td><td class="p-2">Transport</td><td class="p-2">Segments (TCP) / Datagrams (UDP)</td><td class="p-2 text-blue-500">TCP, UDP (Port tracking)</td></tr>
-                            <tr><td class="p-2 font-bold">L3</td><td class="p-2">Network</td><td class="p-2">Packets</td><td class="p-2 text-blue-500">IP, ICMP, OSPF router paths</td></tr>
-                            <tr><td class="p-2 font-bold">L2</td><td class="p-2">Data Link</td><td class="p-2">Frames</td><td class="p-2 text-blue-500">Ethernet, MAC Address switches</td></tr>
+                        <tbody class="divide-y divide-slate-200 dark:divide-slate-700 bg-white dark:bg-slate-900">
+                            <tr><td class="p-3 font-bold">L7</td><td class="p-3">Application</td><td class="p-3">Data Payload</td><td class="p-3 text-blue-500 font-medium">HTTP, DNS, SSH, FTP</td></tr>
+                            <tr><td class="p-3 font-bold">L4</td><td class="p-3">Transport</td><td class="p-3">Segments / Datagrams</td><td class="p-3 text-purple-500 font-medium">TCP Port Bindings, UDP Streams</td></tr>
+                            <tr><td class="p-3 font-bold">L3</td><td class="p-3">Network</td><td class="p-3">Packets</td><td class="p-3 text-amber-600 font-medium">IP Routing, ICMP, Routers</td></tr>
+                            <tr><td class="p-3 font-bold">L2</td><td class="p-3">Data Link</td><td class="p-3">Frames</td><td class="p-3 text-emerald-600 font-medium">MAC Addresses, VLAN Switches, ARP</td></tr>
                         </tbody>
                     </table>
                 </div>
             </section>
 
-            <!-- Subnetting Calculator Block -->
             <section class="custom-card p-6 rounded-2xl shadow-sm">
-                <h2 class="text-2xl font-bold tracking-tight mb-2">Interactive Subnet Matrix Checker</h2>
-                <p class="text-sm text-slate-500 mb-4">Enter a Class C network base template IP to dynamically calculate default network boundaries.</p>
-                <div class="flex flex-col sm:flex-row gap-4 mb-6">
-                    <input type="text" id="ipInput" value="192.168.1.0" class="px-4 py-2 border rounded-xl bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 flex-grow">
-                    <button onclick="computeSubnets()" class="px-6 py-2 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition">Compute Matrix</button>
-                </div>
-                <div class="overflow-x-auto text-xs font-mono" id="subnetOutput">
-                    <!-- Algorithmic insertion -->
+                <h2 class="text-2xl font-bold tracking-tight mb-2">The TCP Three-Way Handshake</h2>
+                <div class="bg-slate-950 p-4 rounded-xl font-mono text-xs text-slate-300 space-y-2 border border-slate-800">
+                    <div>1. <span class="text-cyan-400 font-bold">Client ➔ Server:</span> Send <span class="px-1.5 py-0.5 bg-cyan-500/20 text-cyan-400 font-bold rounded">SYN</span> [Seq = X]</div>
+                    <div>2. <span class="text-purple-400 font-bold">Server ➔ Client:</span> Send <span class="px-1.5 py-0.5 bg-purple-500/20 text-purple-400 font-bold rounded">SYN-ACK</span> [Seq = Y, Ack = X + 1]</div>
+                    <div>3. <span class="text-emerald-400 font-bold">Client ➔ Server:</span> Send <span class="px-1.5 py-0.5 bg-emerald-500/20 text-emerald-400 font-bold rounded">ACK</span> [Ack = Y + 1]</div>
                 </div>
             </section>
+        </div>
+
+        <div class="lg:col-span-1">
+            <div class="sticky top-24 custom-card p-6 rounded-2xl shadow-md border-blue-500/20 bg-gradient-to-b from-transparent to-blue-500/5">
+                <h3 class="text-lg font-bold tracking-tight mb-1 flex items-center gap-2">🧮 CIDR Subnet Calculator</h3>
+                <p class="text-xs text-slate-400 mb-4">Input any base network address and click compute to break out boundaries dynamically.</p>
+                <div class="space-y-4">
+                    <div>
+                        <input type="text" id="calcIp" value="192.168.1.0" class="w-full px-4 py-2 border rounded-xl bg-white dark:bg-slate-800 text-sm focus:ring-2 focus:ring-blue-500 outline-none font-mono text-slate-900 dark:text-white">
+                    </div>
+                    <button onclick="calculateSubnets()" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition">Compute Network Matrix</button>
+                    <div id="calculatorOutput" class="space-y-3 pt-2"></div>
+                </div>
+            </div>
         </div>
     </main>
 
     <script>
-        function computeSubnets() {
-            const base = document.getElementById('ipInput').value.trim();
+        const themeBtn = document.getElementById('themeToggle');
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark'); themeBtn.textContent = '☀️';
+        }
+        themeBtn.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark'); localStorage.setItem('theme', 'light'); themeBtn.textContent = '🌙';
+            } else {
+                document.documentElement.classList.add('dark'); localStorage.setItem('theme', 'dark'); themeBtn.textContent = '☀️';
+            }
+        });
+
+        function calculateSubnets() {
+            const baseIp = document.getElementById('calcIp').value.trim();
             const prefixes =;
-            let html = `<table class="w-full text-left border-collapse"><tr class="border-b bg-slate-800 text-white">
-                <th class="p-2">CIDR Block</th><th class="p-2">Subnet Mask</th><th class="p-2">Total IP Footprint</th><th class="p-2">Usable Host Scope</th></tr>`;
-            
+            const container = document.getElementById('calculatorOutput');
+            container.innerHTML = '';
             prefixes.forEach(p => {
                 let ips = Math.pow(2, 32 - p);
-                let mask = p===24?"255.255.255.0":p===25?"255.255.255.128":p===26?"255.255.255.192":"255.255.255.224";
-                html += `<tr class="border-b">
-                    <td class="p-2 font-bold text-blue-500">${base}/${p}</td>
-                    <td class="p-2">${mask}</td>
-                    <td class="p-2">${ips}</td>
-                    <td class="p-2 text-green-600 font-bold">${ips - 2} usable hosts</td>
-                </tr>`;
+                let mask = p===24?"255.255.255.0":p===25?"255.255.255.128":p===26?"255.255.255.192":p===27?"255.255.255.224":"255.255.255.240";
+                container.innerHTML += `
+                    <div class="p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs font-mono">
+                        <div class="flex justify-between items-center border-b pb-1.5 mb-1.5 border-slate-100 dark:border-slate-700">
+                            <span class="font-bold text-blue-500">${baseIp}/${p}</span>
+                            <span class="text-[10px] text-slate-400">Mask: ${mask}</span>
+                        </div>
+                        <div class="flex justify-between"><span>Total IPs:</span><strong>${ips}</strong></div>
+                        <div class="flex justify-between text-emerald-500 font-semibold"><span>Usable Hosts:</span><span>${ips - 2} Hosts</span></div>
+                    </div>`;
             });
-            html += `</table>`;
-            document.getElementById('subnetOutput').innerHTML = html;
         }
-        window.onload = computeSubnets;
+        window.onload = calculateSubnets;
     </script>
 </body>
 </html>
