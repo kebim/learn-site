@@ -3,93 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT & Cyber Security Academy</title>
+    <title>IT Core Academy Portal</title>
+    <!-- Core Engine Scripts Loaded and Initialized Prior to Paint -->
     <script src="https://tailwindcss.com"></script>
     <link rel="stylesheet" href="css/style.css">
     <script>
         tailwind.config = { darkMode: 'class' }
     </script>
 </head>
-<body class="min-h-screen flex flex-col">
-    <!-- Header Navigation -->
-    <nav class="sticky top-0 z-40 custom-card backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b">
+<body class="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-50">
+
+    <!-- Fixed Header Navigation Bar Interface -->
+    <nav class="sticky top-0 z-40 bg-white/80 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <a href="index.html" class="flex items-center space-x-2 font-bold text-xl tracking-tight bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent">
-                <span>⚡ IT Academy</span>
+                <span>⚡ IT Academy Dashboard</span>
             </a>
-            <div class="hidden md:flex space-x-6 text-sm font-medium">
+            <div class="hidden md:flex space-x-6 text-sm font-medium text-slate-600 dark:text-slate-300">
                 <a href="linux/index.html" class="hover:text-blue-500 transition">Linux SysAdmin</a>
                 <a href="networking/index.html" class="hover:text-blue-500 transition">Networking</a>
                 <a href="cybersecurity/index.html" class="hover:text-blue-500 transition">Cyber Security</a>
                 <a href="github/index.html" class="hover:text-blue-500 transition">Git & GitHub</a>
-                <a href="simulators/index.html" class="hover:text-blue-500 transition text-emerald-500">Live Terminals</a>
+                <a href="simulators/index.html" class="hover:text-emerald-500 transition font-bold text-emerald-600 dark:text-emerald-400">Live Terminals</a>
             </div>
-            <button id="themeToggle" class="p-2 rounded-lg bg-gray-100 dark:bg-slate-800 text-lg">🌙</button>
+            <button id="themeToggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition">🌙</button>
         </div>
     </nav>
 
-    <!-- Main Content Grid -->
+    <!-- Main Subject-Wise Matrix Canvas -->
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="text-center max-w-3xl mx-auto mb-16">
-            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">Subject-Wise Enterprise IT Learning</h1>
+            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 dark:from-white dark:via-blue-100 dark:to-white bg-clip-text text-transparent">Subject-Wise Enterprise IT Learning</h1>
             <p class="text-slate-500 dark:text-slate-400 text-lg">Select a specialized learning track to unlock technical workflows, optimization shortcuts, and interactive sandboxes.</p>
         </div>
 
+        <!-- Fully Responsive Dashboard Grid Layout -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Linux Track -->
-            <div class="custom-card p-6 rounded-2xl flex flex-col justify-between shadow-sm">
+            
+            <!-- Card Module: Linux System Admin -->
+            <div class="custom-card bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-6 rounded-2xl flex flex-col justify-between shadow-sm transition hover:shadow-md">
                 <div>
                     <span class="text-3xl mb-3 block">🐧</span>
-                    <h2 class="text-2xl font-bold tracking-tight mb-2">Linux System Admin</h2>
-                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Master runtime pipelines, permission structures, process isolation, and environment telemetry diagnostics.</p>
+                    <h2 class="text-xl font-bold tracking-tight mb-2">Linux System Admin</h2>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-4">Master runtime pipelines, permission structures, process isolation, and environment telemetry diagnostics.</p>
                 </div>
-                <a href="linux/index.html" class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700 mt-4">Start Track →</a>
+                <a href="linux/index.html" class="inline-flex items-center text-sm font-semibold text-blue-600 dark:text-blue-400 hover:translate-x-1 transition mt-4">Start Track →</a>
             </div>
 
-            <!-- Networking Track -->
-            <div class="custom-card p-6 rounded-2xl flex flex-col justify-between shadow-sm">
+            <!-- Card Module: Networking Architecture -->
+            <div class="custom-card bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-6 rounded-2xl flex flex-col justify-between shadow-sm transition hover:shadow-md">
                 <div>
                     <span class="text-3xl mb-3 block">🌐</span>
-                    <h2 class="text-2xl font-bold tracking-tight mb-2">Networking Architecture</h2>
-                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Deconstruct OSI protocol data framing units, state handshakes, and subnetwork CIDR host space calculations.</p>
+                    <h2 class="text-xl font-bold tracking-tight mb-2">Networking Architecture</h2>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-4">Deconstruct OSI protocol data framing units, state handshakes, and subnetwork CIDR host space calculations.</p>
                 </div>
-                <a href="networking/index.html" class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700 mt-4">Start Track →</a>
+                <a href="networking/index.html" class="inline-flex items-center text-sm font-semibold text-blue-600 dark:text-blue-400 hover:translate-x-1 transition mt-4">Start Track →</a>
             </div>
 
-            <!-- Security Track -->
-            <div class="custom-card p-6 rounded-2xl flex flex-col justify-between shadow-sm">
+            <!-- Card Module: Cyber Security -->
+            <div class="custom-card bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-6 rounded-2xl flex flex-col justify-between shadow-sm transition hover:shadow-md">
                 <div>
                     <span class="text-3xl mb-3 block">🛡️</span>
-                    <h2 class="text-2xl font-bold tracking-tight mb-2">Cyber Security Details</h2>
-                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Investigate mitigation engineering blueprints targeting modern multi-vector systems based on OWASP standards.</p>
+                    <h2 class="text-xl font-bold tracking-tight mb-2">Cyber Security Details</h2>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-4">Investigate mitigation engineering blueprints targeting modern multi-vector systems based on OWASP standards.</p>
                 </div>
-                <a href="cybersecurity/index.html" class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700 mt-4">Start Track →</a>
+                <a href="cybersecurity/index.html" class="inline-flex items-center text-sm font-semibold text-blue-600 dark:text-blue-400 hover:translate-x-1 transition mt-4">Start Track →</a>
             </div>
 
-            <!-- GitHub Track -->
-            <div class="custom-card p-6 rounded-2xl flex flex-col justify-between shadow-sm">
+            <!-- Card Module: Git & GitHub Basics -->
+            <div class="custom-card bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-6 rounded-2xl flex flex-col justify-between shadow-sm transition hover:shadow-md">
                 <div>
                     <span class="text-3xl mb-3 block">🐙</span>
-                    <h2 class="text-2xl font-bold tracking-tight mb-2">Git & GitHub Basics</h2>
-                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Configure local workspace trees, push staging structures, and leverage branch manipulation utilities safely.</p>
+                    <h2 class="text-xl font-bold tracking-tight mb-2">Git & GitHub Basics</h2>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-4">Configure local workspace trees, push staging structures, and leverage branch manipulation utilities safely.</p>
                 </div>
-                <a href="github/index.html" class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700 mt-4">Start Track →</a>
+                <a href="github/index.html" class="inline-flex items-center text-sm font-semibold text-blue-600 dark:text-blue-400 hover:translate-x-1 transition mt-4">Start Track →</a>
             </div>
 
-            <!-- Interactive Terminals Card -->
-            <div class="custom-card p-6 rounded-2xl flex flex-col justify-between border-emerald-500/30 bg-emerald-500/5 shadow-sm md:col-span-2 lg:col-span-1">
+            <!-- Highlighted Workspace Module Card Link -->
+            <div class="custom-card border-emerald-500/30 bg-emerald-500/5 dark:bg-emerald-500/10 p-6 rounded-2xl flex flex-col justify-between shadow-sm md:col-span-2 lg:col-span-1 border transition hover:shadow-md">
                 <div>
                     <span class="text-3xl mb-3 block">💻</span>
-                    <h2 class="text-2xl font-bold tracking-tight text-emerald-600 dark:text-emerald-400 mb-2">Interactive Simulators</h2>
-                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Launch our fully responsive side-by-side Linux Bash and Windows PowerShell terminal simulators featuring complete screen sizing.</p>
+                    <h2 class="text-xl font-bold tracking-tight text-emerald-600 dark:text-emerald-400 mb-2">Interactive Simulators</h2>
+                    <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">Launch our fully responsive side-by-side Linux Bash and Windows PowerShell terminal simulators featuring complete screen sizing controls.</p>
                 </div>
-                <a href="simulators/index.html" class="inline-flex items-center text-sm font-semibold text-emerald-600 hover:text-emerald-700 mt-4">Open Terminals →</a>
+                <a href="simulators/index.html" class="inline-flex items-center text-sm font-bold text-emerald-600 dark:text-emerald-400 hover:translate-x-1 transition mt-4">Open Workspace Terminals →</a>
             </div>
+
         </div>
     </main>
 
-    <footer class="mt-auto border-t py-6 text-center text-xs text-slate-400 custom-card">
-        <p>Managed statically via GitHub Pages framework. Optimized for all devices.</p>
+    <!-- Footer System Frame -->
+    <footer class="mt-auto border-t border-slate-200 dark:border-slate-800 py-6 text-center text-xs text-slate-400 bg-white dark:bg-slate-900 transition-colors">
+        <p>Managed statically via GitHub Pages framework. Optimized for multi-device rendering layout configurations.</p>
     </footer>
 
     <script>
