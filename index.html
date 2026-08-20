@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core IT & Cyber Security Knowledge Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        code, pre { font-family: 'JetBrains+Mono', monospace; }
+        .dark-mode { background-color: #0f172a; color: #f8fafc; }
+        .dark-mode .card { background-color: #1e293b; border-color: #334155; }
+        .dark-mode .badge { background-color: #334155; color: #38bdf8; }
+        .dark-mode pre { background-color: #0f172a; border-color: #334155; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 transition-colors duration-200 min-h-screen flex flex-col">
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b border-gray-200 dark:border-slate-800 transition-colors duration-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <span class="text-2xl">⚡</span>
+                <span class="font-bold text-xl tracking-tight bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">IT Core Knowledge Hub</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button id="themeToggle" class="p-2 rounded-lg bg-gray-100 dark:bg-slate-800 hover:bg-gray-200 dark:hover:bg-slate-700 transition" aria-label="Toggle Dark Mode">
+                    <span id="themeIcon">🌙</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- Hero and Live Search System -->
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl mb-4">Master Essential IT Concepts</h1>
+            <p class="text-gray-600 dark:text-gray-400 text-lg mb-6">High-density shortcuts, fundamental mental models, and production commands.</p>
+            <div class="relative">
+                <input type="text" id="searchInput" placeholder="Search keywords (e.g., tcp, chmod, git, cia)..." 
+                       class="w-full pl-5 pr-12 py-3 bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-700 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                <span class="absolute right-4 top-3.5 text-gray-400">🔍</span>
+            </div>
+        </div>
+
+        <!-- Dashboard Grid System -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="topicsGrid">
+
+            <!-- Section 1: Linux Sysadmin -->
+            <section class="card bg-white border border-gray-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between" data-search="linux system admin chmod chown ps top lsof grep pipe systemctl logs">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <h2 class="text-2xl font-bold tracking-tight">🐧 Linux System Administration</h2>
+                        <span class="badge bg-blue-50 text-blue-700 text-xs font-semibold px-2.5 py-1 rounded-md">OS Core</span>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Critical operational commands, permission math, and system triage shortcuts.</p>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Octal Permission Shortcut</h3>
+                            <p class="text-sm">Permissions match standard numerical bits: <code class="px-1 py-0.5 bg-gray-100 dark:bg-slate-800 rounded">Read (4)</code>, <code class="px-1 py-0.5 bg-gray-100 dark:bg-slate-800 rounded">Write (2)</code>, <code class="px-1 py-0.5 bg-gray-100 dark:bg-slate-800 rounded">Execute (1)</code>.</p>
+                            <pre class="mt-1.5 p-2 bg-gray-50 border border-gray-100 rounded text-xs text-green-600 dark:text-green-400 font-mono">chmod 755 script.sh # Owner: Full (7), Group/Others: Read/Exe (5)</pre>
+                        </div>
+                        <div>
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Triage & Process Investigation</h3>
+                            <pre class="p-2 bg-gray-50 border border-gray-100 rounded text-xs text-green-600 dark:text-green-400 font-mono">
+ps aux | grep nginx      # Locate matching process IDs
+lsof -i :80              # View process occupying Port 80
+df -h && free -m         # Quick disk and RAM health check
+journalctl -xeu ssh      # Debug failing service logs instantly</pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Git & GitHub Basics -->
+            <section class="card bg-white border border-gray-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between" data-search="github git version control staging tracking log commit push rebase stash reset HEAD">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <h2 class="text-2xl font-bold tracking-tight">🐙 Git & GitHub Essentials</h2>
+                        <span class="badge bg-purple-50 text-purple-700 text-xs font-semibold px-2.5 py-1 rounded-md">VCS</span>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Standard tracking pipelines, data recovery, and remote state alignment.</p>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">The Standard Pipeline</h3>
+                            <pre class="p-2 bg-gray-50 border border-gray-100 rounded text-xs text-green-600 dark:text-green-400 font-mono">
+git add .                  # Stage all current working directory changes
+git commit -m "feat: core" # Create absolute logical point in history
+git push origin main       # Sync local branch up to GitHub remote</pre>
+                        </div>
+                        <div>
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Emergency State Manipulation</h3>
+                            <pre class="p-2 bg-gray-50 border border-gray-100 rounded text-xs text-green-600 dark:text-green-400 font-mono">
+git reset --soft HEAD~1    # Undo last commit; keep your file changes
+git stash && git stash pop # Save working state safely to clean working tree
+git checkout -b new-branch # Create and pivot to isolated branch footprint</pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Cyber Security Paradigms -->
+            <section class="card bg-white border border-gray-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between" data-search="cyber security cia triad confidentiality integrity availability least privilege zero trust phishing xss sql injection">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <h2 class="text-2xl font-bold tracking-tight">🛡️ Cyber Security Foundations</h2>
+                        <span class="badge bg-red-50 text-red-700 text-xs font-semibold px-2.5 py-1 rounded-md">Defense</span>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Structural security design principles and structural infrastructure vectors.</p>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">The CIA Triad</h3>
+                            <ul class="text-sm list-disc pl-4 space-y-1">
+                                <li><strong>Confidentiality:</strong> Encryption at rest/flight (AES/TLS) protects data from snooping.</li>
+                                <li><strong>Integrity:</strong> Hashing algorithms (SHA-256) protect files against silent mutation.</li>
+                                <li><strong>Availability:</strong> Redundancy topologies (RAID, High Availability clusters) defend uptime.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Core Defense Mandate</h3>
+                            <p class="text-sm italic">"Never Trust, Always Verify."</p>
+                            <p class="text-xs mt-1 text-gray-500">Apply the Principle of Least Privilege (PoLP): Grant endpoints the absolute bare minimum system clearance needed to process tasks.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Networking Theories -->
+            <section class="card bg-white border border-gray-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between" data-search="networking osi model tcp ip handshake dns router switch subnets packets layers encapsulation ip routing">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <h2 class="text-2xl font-bold tracking-tight">🌐 Networking Architecture</h2>
+                        <span class="badge bg-emerald-50 text-emerald-700 text-xs font-semibold px-2.5 py-1 rounded-md">Infrastructure</span>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Encapsulation boundaries, state machines, and baseline traffic controls.</p>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">OSI Reference Model Visual Layer Shortcut</h3>
+                            <p class="text-xs font-medium text-blue-600 dark:text-blue-400 mb-1">"Please Do Not Throw Sausage Pizza Away"</p>
+                            <p class="text-xs font-mono tracking-tight bg-gray-50 dark:bg-slate-800 p-2 rounded border border-gray-100">
+                                L1 Physical ➔ L2 Data Link (MAC) ➔ L3 Network (IP) ➔ L4 Transport (TCP/UDP) ➔ L5 Session ➔ L6 Presentation ➔ L7 Application (HTTP/DNS)
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">The TCP Three-Way Handshake</h3>
+                            <p class="text-sm">Establishes stateful session reliability via flag tracking sequences:</p>
+                            <div class="flex justify-between text-center font-mono text-xs bg-gray-50 dark:bg-slate-800 p-2 rounded mt-1 border border-gray-100">
+                                <div>Client<br><strong>SYN</strong> ➔</div>
+                                <div>Server<br>🕒</div>
+                                <div>Server<br>hex <strong>SYN-ACK</strong> ➔</div>
+                                <div>Client<br>🕒</div>
+                                <div>Client<br><strong>ACK</strong> ➔</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="mt-auto border-t border-gray-200 dark:border-slate-800 py-6 text-center text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>Designed for fast deployment via GitHub Pages. Single static dependency.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Dark Mode Logic
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        
+        // System preference or saved state check
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            document.body.classList.add('dark-mode');
+            themeIcon.textContent = '☀️';
+        } else {
+            document.documentElement.classList.remove('dark');
+            document.body.classList.remove('dark-mode');
+            themeIcon.textContent = '🌙';
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                document.body.classList.remove('dark-mode');
+                localStorage.setItem('color-theme', 'light');
+                themeIcon.textContent = '🌙';
+            } else {
+                document.documentElement.classList.add('dark');
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('color-theme', 'dark');
+                themeIcon.textContent = '☀️';
+            }
+        });
+
+        // Real-time Dashboard Client Search Engine
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const query = e.target.value.toLowerCase().trim();
+            const cards = document.querySelectorAll('#topicsGrid section');
+            
+            cards.forEach(card => {
+                const searchSpace = card.getAttribute('data-search').toLowerCase();
+                const contentText = card.innerText.toLowerCase();
+                
+                if (searchSpace.includes(query) || contentText.includes(query)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
