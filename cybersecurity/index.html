@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Security Architecture</title>
+    <script src="https://tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <script>tailwind.config = { darkMode: 'class' }</script>
+</head>
+<body class="min-h-screen flex flex-col">
+    <nav class="sticky top-0 z-40 custom-card backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center space-x-2 font-bold text-xl tracking-tight text-red-600">
+                <span>🛡️ Cyber Security Track</span>
+            </a>
+            <div class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="../index.html" class="hover:text-blue-500">Dashboard</a>
+                <a href="../linux/index.html" class="hover:text-blue-500">Linux</a>
+                <a href="../networking/index.html" class="hover:text-blue-500">Networking</a>
+                <a href="../simulators/index.html" class="text-emerald-500 font-bold">Launch Terminals</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow max-w-5xl w-full mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="custom-card p-4 rounded-xl border-l-4 border-l-red-500 shadow-sm">
+                <span class="font-bold text-sm block tracking-wider uppercase text-slate-400">Confidentiality</span>
+                <p class="text-xs mt-1">Data remains locked against unauthorized read tracking. Supported via strong TLS, SSH key structures, and AES-256 data encryption routines.</p>
+            </div>
+            <div class="custom-card p-4 rounded-xl border-l-4 border-l-yellow-500 shadow-sm">
+                <span class="font-bold text-sm block tracking-wider uppercase text-slate-400">Integrity</span>
+                <p class="text-xs mt-1">Guarantees data state records stay unmutated. Validated using cryptographically complex verification codes like SHA-256 hashes.</p>
+            </div>
+            <div class="custom-card p-4 rounded-xl border-l-4 border-l-green-500 shadow-sm">
+                <span class="font-bold text-sm block tracking-wider uppercase text-slate-400">Availability</span>
+                <p class="text-xs mt-1">Ensures systems stay functional for authorized requests. Maintained using redundant infrastructure arrays and load balancing proxies.</p>
+            </div>
+        </div>
+
+        <section class="custom-card p-6 rounded-2xl shadow-sm">
+            <h2 class="text-2xl font-bold tracking-tight mb-4">OWASP Top 10 Core Application Mitigations</h2>
+            <div class="space-y-4 text-sm">
+                <div class="p-3 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                    <span class="font-bold text-red-500 block">Vulnerability: Injection Paths (SQLi, Command Injection)</span>
+                    <p class="text-xs mt-1 text-slate-500"><strong>Mitigation:</strong> Never concatenate unsanitized text components directly into database lookup fields. Always use parameterization frameworks.</p>
+                </div>
+                <div class="p-3 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                    <span class="font-bold text-red-500 block">Vulnerability: Cross-Site Scripting (XSS)</span>
+                    <p class="text-xs mt-1 text-slate-500"><strong>Mitigation:</strong> Strip browser runtime triggers out of text entry areas. Enforce a robust Content Security Policy (CSP) header layer.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
