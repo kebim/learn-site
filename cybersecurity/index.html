@@ -3,55 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyber Security Architecture</title>
+    <title>Cyber Security Foundations & Mitigations</title>
     <script src="https://tailwindcss.com"></script>
-    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        @import url('https://googleapis.com');
+        :root { --bg: #f8fafc; --card: #ffffff; --text: #0f172a; --border: #e2e8f0; }
+        .dark { --bg: #0f172a; --card: #1e293b; --text: #f8fafc; --border: #334155; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); transition: all 0.2s ease; }
+        .custom-card { background-color: var(--card); border: 1px solid var(--border); }
+        code, pre { font-family: 'JetBrains+Mono', monospace; }
+    </style>
     <script>tailwind.config = { darkMode: 'class' }</script>
 </head>
 <body class="min-h-screen flex flex-col">
+
     <nav class="sticky top-0 z-40 custom-card backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <a href="../index.html" class="flex items-center space-x-2 font-bold text-xl tracking-tight text-red-600">
-                <span>🛡️ Cyber Security Track</span>
+                <span>🛡️ Cyber Security Details</span>
             </a>
-            <div class="hidden md:flex space-x-6 text-sm font-medium">
-                <a href="../index.html" class="hover:text-blue-500">Dashboard</a>
-                <a href="../linux/index.html" class="hover:text-blue-500">Linux</a>
-                <a href="../networking/index.html" class="hover:text-blue-500">Networking</a>
-                <a href="../simulators/index.html" class="text-emerald-500 font-bold">Launch Terminals</a>
+            <div class="space-x-4 text-sm font-medium">
+                <a href="../index.html" class="hover:text-blue-500 transition">Dashboard</a>
+                <a href="../networking/index.html" class="hover:text-blue-500 transition">Networking</a>
+                <a href="../github/index.html" class="hover:text-blue-500 transition">Git</a>
             </div>
+            <button id="themeToggle" class="p-2 rounded-lg bg-gray-100 dark:bg-slate-800 text-lg">🌙</button>
         </div>
     </nav>
 
-    <main class="flex-grow max-w-5xl w-full mx-auto px-4 py-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div class="custom-card p-4 rounded-xl border-l-4 border-l-red-500 shadow-sm">
-                <span class="font-bold text-sm block tracking-wider uppercase text-slate-400">Confidentiality</span>
-                <p class="text-xs mt-1">Data remains locked against unauthorized read tracking. Supported via strong TLS, SSH key structures, and AES-256 data encryption routines.</p>
+    <main class="flex-grow max-w-5xl w-full mx-auto px-4 py-8 space-y-8">
+        <!-- CIA Triad Framework Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="custom-card p-5 rounded-2xl shadow-sm border-l-4 border-l-red-500">
+                <h3 class="font-bold text-md text-red-600 dark:text-red-400 uppercase tracking-wider mb-1">Confidentiality</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Prevents unauthorized data disclosure. Enforced via AES-256 bit encryption, TLS protocols, and strict access controls.</p>
             </div>
-            <div class="custom-card p-4 rounded-xl border-l-4 border-l-yellow-500 shadow-sm">
-                <span class="font-bold text-sm block tracking-wider uppercase text-slate-400">Integrity</span>
-                <p class="text-xs mt-1">Guarantees data state records stay unmutated. Validated using cryptographically complex verification codes like SHA-256 hashes.</p>
+            <div class="custom-card p-5 rounded-2xl shadow-sm border-l-4 border-l-amber-500">
+                <h3 class="font-bold text-md text-amber-600 dark:text-amber-400 uppercase tracking-wider mb-1">Integrity</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Guarantees information remains unmutated. Validated using cryptographic hashing mechanisms like SHA-256.</p>
             </div>
-            <div class="custom-card p-4 rounded-xl border-l-4 border-l-green-500 shadow-sm">
-                <span class="font-bold text-sm block tracking-wider uppercase text-slate-400">Availability</span>
-                <p class="text-xs mt-1">Ensures systems stay functional for authorized requests. Maintained using redundant infrastructure arrays and load balancing proxies.</p>
+            <div class="custom-card p-5 rounded-2xl shadow-sm border-l-4 border-l-emerald-500">
+                <h3 class="font-bold text-md text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-1">Availability</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Ensures resources stay online for legitimate requests. Protected via load balancing and DDoS target proxies.</p>
             </div>
         </div>
 
+        <!-- Interactive OWASP Vulnerability Matrix Sandbox Module -->
         <section class="custom-card p-6 rounded-2xl shadow-sm">
-            <h2 class="text-2xl font-bold tracking-tight mb-4">OWASP Top 10 Core Application Mitigations</h2>
-            <div class="space-y-4 text-sm">
-                <div class="p-3 bg-slate-50 dark:bg-slate-800 rounded-xl">
-                    <span class="font-bold text-red-500 block">Vulnerability: Injection Paths (SQLi, Command Injection)</span>
-                    <p class="text-xs mt-1 text-slate-500"><strong>Mitigation:</strong> Never concatenate unsanitized text components directly into database lookup fields. Always use parameterization frameworks.</p>
+            <h2 class="text-2xl font-bold tracking-tight mb-2">OWASP Top 10 Threat Defense Blueprint</h2>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">Click on any vulnerability threat option below to review its production-level secure code remediation patch.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="flex flex-col space-y-2">
+                    <button onclick="loadThreat('sqli')" class="w-full text-left p-3 rounded-xl border font-semibold text-xs bg-slate-50 dark:bg-slate-800 hover:bg-red-500/10 transition border-slate-200 dark:border-slate-700">⚠️ SQL Injection Paths</button>
+                    <button onclick="loadThreat('xss')" class="w-full text-left p-3 rounded-xl border font-semibold text-xs bg-slate-50 dark:bg-slate-800 hover:bg-red-500/10 transition border-slate-200 dark:border-slate-700">⚠️ Cross-Site Scripting (XSS)</button>
+                    <button onclick="loadThreat('auth')" class="w-full text-left p-3 rounded-xl border font-semibold text-xs bg-slate-50 dark:bg-slate-800 hover:bg-red-500/10 transition border-slate-200 dark:border-slate-700">⚠️ Broken Access Control</button>
                 </div>
-                <div class="p-3 bg-slate-50 dark:bg-slate-800 rounded-xl">
-                    <span class="font-bold text-red-500 block">Vulnerability: Cross-Site Scripting (XSS)</span>
-                    <p class="text-xs mt-1 text-slate-500"><strong>Mitigation:</strong> Strip browser runtime triggers out of text entry areas. Enforce a robust Content Security Policy (CSP) header layer.</p>
+                
+                <div class="md:col-span-2 p-4 rounded-xl bg-slate-900 border border-slate-800 flex flex-col justify-center min-h-[180px]">
+                    <div id="threatTitle" class="text-sm font-bold text-red-400 mb-2">Select a vulnerability threat item</div>
+                    <p id="threatDesc" class="text-xs text-slate-400 mb-3">Click a button on the left to see descriptions and fixes.</p>
+                    <pre id="threatCode" class="text-[11px] text-green-400 p-2 bg-black/50 rounded overflow-x-auto hidden"></pre>
                 </div>
             </div>
         </section>
     </main>
+
+    <script>
+        const themeBtn = document.getElementById('themeToggle');
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark'); themeBtn.textContent = '☀️';
+        }
+        themeBtn.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark'); localStorage.setItem('theme', 'light'); themeBtn.textContent = '🌙';
+            } else {
+                document.documentElement.classList.add('dark'); localStorage.setItem('theme', 'dark'); themeBtn.textContent = '☀️';
+            }
+        });
+
+        const database = {
+            sqli: {
+                title: "SQL Injection Attack Vector Mitigation",
+                desc: "Never string-concatenate user input variables directly inside raw database queries.",
+                code: "// Secure Fix: Use Parameterized Queries\nconst query = 'SELECT * FROM users WHERE id = ?';\ndb.execute(query, [req.body.userId]);"
+            },
+            xss: {
+                title: "Cross-Site Scripting (XSS) Remediation",
+                desc: "Sanitize and entity-encode input strings before outputting them to the browser window DOM.",
+                code: "<!-- Secure Fix: HTML Character Escaping -->\n<div>${DOMPurify.sanitize(userInput)}</div>"
+            },
+            auth: {
+                title: "Broken Access Control Principle Fix",
+                desc: "Enforce multi-tenant resource lookups on the server side instead of trusting client IDs.",
+                code: "// Secure Fix: Verify Session Ownership\nif (file.ownerId !== req.user.id) {\n    return res.status(403).send('Access Denied');\n}"
+            }
+        };
+
+        function loadThreat(key) {
+            const data = database[key];
+            document.getElementById('threatTitle').textContent = data.title;
+            document.getElementById('threatDesc').textContent = data.desc;
+            const codeEl = document.getElementById('threatCode');
+            codeEl.textContent = data.code;
+            codeEl.classList.remove('hidden');
+        }
+    </script>
 </body>
 </html>
