@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Core IT & Cyber Security Knowledge Hub</title>
+    <title>Core IT, Networking & Cyber Security Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
@@ -13,6 +13,8 @@
         .dark-mode .card { background-color: #1e293b; border-color: #334155; }
         .dark-mode .badge { background-color: #334155; color: #38bdf8; }
         .dark-mode pre { background-color: #0f172a; border-color: #334155; }
+        .dark-mode input, .dark-mode textarea { background-color: #1e293b; border-color: #334155; color: #f8fafc; }
+        .terminal-glow { box-shadow: 0 0 15px rgba(34, 197, 94, 0.2); }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900 transition-colors duration-200 min-h-screen flex flex-col">
@@ -22,7 +24,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-3">
                 <span class="text-2xl">⚡</span>
-                <span class="font-bold text-xl tracking-tight bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">IT Core Knowledge Hub</span>
+                <span class="font-bold text-xl tracking-tight bg-gradient-to-r from-emerald-500 to-blue-600 bg-clip-text text-transparent">IT Core & Networking Hub</span>
             </div>
             <div class="flex items-center space-x-4">
                 <button id="themeToggle" class="p-2 rounded-lg bg-gray-100 dark:bg-slate-800 hover:bg-gray-200 dark:hover:bg-slate-700 transition" aria-label="Toggle Dark Mode">
@@ -37,127 +39,172 @@
         
         <!-- Hero and Live Search System -->
         <div class="text-center max-w-2xl mx-auto mb-12">
-            <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl mb-4">Master Essential IT Concepts</h1>
-            <p class="text-gray-600 dark:text-gray-400 text-lg mb-6">High-density shortcuts, fundamental mental models, and production commands.</p>
+            <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl mb-4">Interactive IT Reference Hub</h1>
+            <p class="text-gray-600 dark:text-gray-400 text-lg mb-6">Interactive terminal emulation, networking sandboxes, and structural cheat sheets.</p>
             <div class="relative">
-                <input type="text" id="searchInput" placeholder="Search keywords (e.g., tcp, chmod, git, cia)..." 
-                       class="w-full pl-5 pr-12 py-3 bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-700 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                <input type="text" id="searchInput" placeholder="Search topics (e.g., git, subnet, xss, cidr, port)..." 
+                       class="w-full pl-5 pr-12 py-3 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
                 <span class="absolute right-4 top-3.5 text-gray-400">🔍</span>
             </div>
         </div>
 
-        <!-- Dashboard Grid System -->
+        <!-- Interactive Linux Terminal Module -->
+        <section class="mb-12 bg-slate-950 text-slate-100 rounded-2xl border border-slate-800 overflow-hidden shadow-2xl terminal-glow">
+            <div class="bg-slate-900 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    <span class="text-xs text-slate-400 font-mono ml-2">interactive_linux_sandbox ~ guest@hub</span>
+                </div>
+                <span class="text-xs text-emerald-400 font-mono border border-emerald-500/30 px-2 py-0.5 rounded">Live Simulator</span>
+            </div>
+            <div class="p-6 font-mono text-sm h-64 overflow-y-auto space-y-2" id="terminalOutput">
+                <div class="text-slate-400">Welcome to the IT Hub Terminal Simulator. Type <span class="text-yellow-400">help</span> to see available mock commands (ls, cat, ip addr, git status, clear).</div>
+            </div>
+            <div class="bg-slate-900/50 px-6 py-3 border-t border-slate-800/60 flex items-center">
+                <span class="text-emerald-400 font-mono mr-2">guest@hub:~$</span>
+                <input type="text" id="terminalInput" class="w-full bg-transparent border-none outline-none text-emerald-400 font-mono focus:ring-0 p-0" autocomplete="off" autofocus>
+            </div>
+        </section>
+
+        <!-- Main Educational Content Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="topicsGrid">
 
-            <!-- Section 1: Linux Sysadmin -->
-            <section class="card bg-white border border-gray-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between" data-search="linux system admin chmod chown ps top lsof grep pipe systemctl logs">
+            <!-- Card 1: Network Subnetting Masterclass -->
+            <section class="card bg-white border border-gray-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between" data-search="networking subnetting ip address cidr masks subnets gateway hosts broadcast formulas">
                 <div>
                     <div class="flex justify-between items-start mb-4">
-                        <h2 class="text-2xl font-bold tracking-tight">🐧 Linux System Administration</h2>
-                        <span class="badge bg-blue-50 text-blue-700 text-xs font-semibold px-2.5 py-1 rounded-md">OS Core</span>
+                        <h2 class="text-2xl font-bold tracking-tight">🌐 Advanced Subnetting & IP Design</h2>
+                        <span class="badge bg-emerald-50 text-emerald-700 text-xs font-semibold px-2.5 py-1 rounded-md">Networking</span>
                     </div>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Critical operational commands, permission math, and system triage shortcuts.</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Breakdown of Classless Inter-Domain Routing (CIDR) logic and design math blueprints.</p>
                     
                     <div class="space-y-4">
-                        <div>
-                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Octal Permission Shortcut</h3>
-                            <p class="text-sm">Permissions match standard numerical bits: <code class="px-1 py-0.5 bg-gray-100 dark:bg-slate-800 rounded">Read (4)</code>, <code class="px-1 py-0.5 bg-gray-100 dark:bg-slate-800 rounded">Write (2)</code>, <code class="px-1 py-0.5 bg-gray-100 dark:bg-slate-800 rounded">Execute (1)</code>.</p>
-                            <pre class="mt-1.5 p-2 bg-gray-50 border border-gray-100 rounded text-xs text-green-600 dark:text-green-400 font-mono">chmod 755 script.sh # Owner: Full (7), Group/Others: Read/Exe (5)</pre>
-                        </div>
-                        <div>
-                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Triage & Process Investigation</h3>
-                            <pre class="p-2 bg-gray-50 border border-gray-100 rounded text-xs text-green-600 dark:text-green-400 font-mono">
-ps aux | grep nginx      # Locate matching process IDs
-lsof -i :80              # View process occupying Port 80
-df -h && free -m         # Quick disk and RAM health check
-journalctl -xeu ssh      # Debug failing service logs instantly</pre>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Section 2: Git & GitHub Basics -->
-            <section class="card bg-white border border-gray-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between" data-search="github git version control staging tracking log commit push rebase stash reset HEAD">
-                <div>
-                    <div class="flex justify-between items-start mb-4">
-                        <h2 class="text-2xl font-bold tracking-tight">🐙 Git & GitHub Essentials</h2>
-                        <span class="badge bg-purple-50 text-purple-700 text-xs font-semibold px-2.5 py-1 rounded-md">VCS</span>
-                    </div>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Standard tracking pipelines, data recovery, and remote state alignment.</p>
-                    
-                    <div class="space-y-4">
-                        <div>
-                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">The Standard Pipeline</h3>
-                            <pre class="p-2 bg-gray-50 border border-gray-100 rounded text-xs text-green-600 dark:text-green-400 font-mono">
-git add .                  # Stage all current working directory changes
-git commit -m "feat: core" # Create absolute logical point in history
-git push origin main       # Sync local branch up to GitHub remote</pre>
-                        </div>
-                        <div>
-                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Emergency State Manipulation</h3>
-                            <pre class="p-2 bg-gray-50 border border-gray-100 rounded text-xs text-green-600 dark:text-green-400 font-mono">
-git reset --soft HEAD~1    # Undo last commit; keep your file changes
-git stash && git stash pop # Save working state safely to clean working tree
-git checkout -b new-branch # Create and pivot to isolated branch footprint</pre>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Section 3: Cyber Security Paradigms -->
-            <section class="card bg-white border border-gray-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between" data-search="cyber security cia triad confidentiality integrity availability least privilege zero trust phishing xss sql injection">
-                <div>
-                    <div class="flex justify-between items-start mb-4">
-                        <h2 class="text-2xl font-bold tracking-tight">🛡️ Cyber Security Foundations</h2>
-                        <span class="badge bg-red-50 text-red-700 text-xs font-semibold px-2.5 py-1 rounded-md">Defense</span>
-                    </div>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Structural security design principles and structural infrastructure vectors.</p>
-                    
-                    <div class="space-y-4">
-                        <div>
-                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">The CIA Triad</h3>
-                            <ul class="text-sm list-disc pl-4 space-y-1">
-                                <li><strong>Confidentiality:</strong> Encryption at rest/flight (AES/TLS) protects data from snooping.</li>
-                                <li><strong>Integrity:</strong> Hashing algorithms (SHA-256) protect files against silent mutation.</li>
-                                <li><strong>Availability:</strong> Redundancy topologies (RAID, High Availability clusters) defend uptime.</li>
+                        <div class="bg-slate-50 dark:bg-slate-800/50 p-3 rounded-xl border border-gray-100 dark:border-slate-800">
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Core Subnetting Formulas</h3>
+                            <ul class="text-xs space-y-1 font-mono text-blue-600 dark:text-blue-400">
+                                <li>Total Subnets = 2^n (where n = borrowed host bits)</li>
+                                <li>Usable Hosts/Subnet = (2^h) - 2 (where h = remaining host bits)</li>
                             </ul>
                         </div>
+                        
                         <div>
-                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Core Defense Mandate</h3>
-                            <p class="text-sm italic">"Never Trust, Always Verify."</p>
-                            <p class="text-xs mt-1 text-gray-500">Apply the Principle of Least Privilege (PoLP): Grant endpoints the absolute bare minimum system clearance needed to process tasks.</p>
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Practical Subnetting Walkthrough</h3>
+                            <div class="text-xs space-y-2 text-gray-600 dark:text-gray-300">
+                                <p>Given Network Address Profile: <strong class="text-slate-900 dark:text-white">192.168.1.0/26</strong></p>
+                                <ul class="list-disc pl-4 space-y-1">
+                                    <li><strong>Subnet Mask:</strong> 255.255.255.192 (Binary: 11000000 in last octet)</li>
+                                    <li><strong>Block Increment Size:</strong> 256 - 192 = 64 addresses per boundary.</li>
+                                    <li><strong>Network ID:</strong> 192.168.1.0</li>
+                                    <li><strong>Usable IP Range:</strong> 192.168.1.1 to 192.168.1.62</li>
+                                    <li><strong>Broadcast ID:</strong> 192.168.1.63</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Live interactive subnetting calculator component -->
+                        <div class="pt-2 border-t border-gray-100 dark:border-slate-800">
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-yellow-500 mb-2">Live Subnet Block Discovery Sandbox</h3>
+                            <div class="flex space-x-2">
+                                <select id="cidrSelect" class="text-xs p-2 rounded-lg border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 w-full">
+                                    <option value="24">/24 (256 Total IPs - Mask: .0)</option>
+                                    <option value="25">/25 (128 Total IPs - Mask: .128)</option>
+                                    <option value="26" selected>/26 (64 Total IPs - Mask: .192)</option>
+                                    <option value="27">/27 (32 Total IPs - Mask: .224)</option>
+                                </select>
+                                <button onclick="calculateSubnet()" class="bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs px-4 py-2 rounded-lg transition">Analyze</button>
+                            </div>
+                            <div id="subnetCalcResult" class="mt-2 text-xs font-mono text-emerald-600 dark:text-emerald-400 hidden bg-emerald-500/10 p-2 rounded border border-emerald-500/20"></div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Section 4: Networking Theories -->
-            <section class="card bg-white border border-gray-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between" data-search="networking osi model tcp ip handshake dns router switch subnets packets layers encapsulation ip routing">
+            <!-- Card 2: Linux Administration & Core Diagnostics -->
+            <section class="card bg-white border border-gray-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between" data-search="linux system admin triage network tools netstat ss ip systemd permissions syslog tar crontab">
                 <div>
                     <div class="flex justify-between items-start mb-4">
-                        <h2 class="text-2xl font-bold tracking-tight">🌐 Networking Architecture</h2>
-                        <span class="badge bg-emerald-50 text-emerald-700 text-xs font-semibold px-2.5 py-1 rounded-md">Infrastructure</span>
+                        <h2 class="text-2xl font-bold tracking-tight">🐧 Production Linux Administration</h2>
+                        <span class="badge bg-blue-50 text-blue-700 text-xs font-semibold px-2.5 py-1 rounded-md">Sysadmin</span>
                     </div>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Encapsulation boundaries, state machines, and baseline traffic controls.</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Deep inspection commands, job schedulers, and infrastructural connection diagnosis tools.</p>
                     
                     <div class="space-y-4">
                         <div>
-                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">OSI Reference Model Visual Layer Shortcut</h3>
-                            <p class="text-xs font-medium text-blue-600 dark:text-blue-400 mb-1">"Please Do Not Throw Sausage Pizza Away"</p>
-                            <p class="text-xs font-mono tracking-tight bg-gray-50 dark:bg-slate-800 p-2 rounded border border-gray-100">
-                                L1 Physical ➔ L2 Data Link (MAC) ➔ L3 Network (IP) ➔ L4 Transport (TCP/UDP) ➔ L5 Session ➔ L6 Presentation ➔ L7 Application (HTTP/DNS)
-                            </p>
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Advanced Network Port Triage</h3>
+                            <pre class="p-2 bg-gray-50 border border-gray-100 rounded text-xs text-green-600 dark:text-green-400 font-mono">
+ss -tulpn                  # Modern replacement for netstat; show open listening sockets
+ip -br addr show           # Brief overview of network interfaces and state
+tcpdump -i eth0 icmp       # Intercept live raw network packet streams on an interface</pre>
                         </div>
                         <div>
-                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">The TCP Three-Way Handshake</h3>
-                            <p class="text-sm">Establishes stateful session reliability via flag tracking sequences:</p>
-                            <div class="flex justify-between text-center font-mono text-xs bg-gray-50 dark:bg-slate-800 p-2 rounded mt-1 border border-gray-100">
-                                <div>Client<br><strong>SYN</strong> ➔</div>
-                                <div>Server<br>🕒</div>
-                                <div>Server<br>hex <strong>SYN-ACK</strong> ➔</div>
-                                <div>Client<br>🕒</div>
-                                <div>Client<br><strong>ACK</strong> ➔</div>
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Systemd & Routine Schedulers</h3>
+                            <pre class="p-2 bg-gray-50 border border-gray-100 rounded text-xs text-green-600 dark:text-green-400 font-mono">
+systemctl link unit.service # Hook custom standalone daemon into path execution
+crontab -e                 # Access automation file script configs
+# Minute Hour Day Month DayOfWeek Command
+0 2 * * * /backup.sh       # Executest at exactly 02:00 AM daily</pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Card 3: Enterprise GitHub Workflow Ecosystem -->
+            <section class="card bg-white border border-gray-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between" data-search="github git rebase merge conflict remote upstream cherrypick logs hash tag hooks">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <h2 class="text-2xl font-bold tracking-tight">🐙 Enterprise Git Pipelines</h2>
+                        <span class="badge bg-purple-50 text-purple-700 text-xs font-semibold px-2.5 py-1 rounded-md">Version Control</span>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Handling state reconciliation, remote branch synchronizations, and target commits.</p>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Rebase vs Merge Strategies</h3>
+                            <p class="text-xs text-gray-600 dark:text-gray-400 mb-2">Use merge to maintain true history timelines. Use rebase to create straight linear commits.</p>
+                            <pre class="p-2 bg-gray-50 border border-gray-100 rounded text-xs text-green-600 dark:text-green-400 font-mono">
+git fetch upstream          # Pull upstream project change frameworks
+git checkout main
+git rebase upstream/main    # Reapply local commits on top of current upstream state</pre>
+                        </div>
+                        <div>
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Target Extraction & Inspections</h3>
+                            <pre class="p-2 bg-gray-50 border border-gray-100 rounded text-xs text-green-600 dark:text-green-400 font-mono">
+git cherry-pick a1b2c3d    # Select individual commit hash from branch
+git log --oneline --graph  # Render ASCII branch history relationship structure</pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Card 4: Cyber Security Architecture & Vectors -->
+            <section class="card bg-white border border-gray-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between" data-search="cyber security owasp top 10 xss mitigation sql injection hashing salting waf firewall ips ids">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <h2 class="text-2xl font-bold tracking-tight">🛡️ Cyber Security Mitigation Matrix</h2>
+                        <span class="badge bg-red-50 text-red-700 text-xs font-semibold px-2.5 py-1 rounded-md">Security</span>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Defense patterns mapped against the vulnerabilities in the OWASP Top 10 framework.</p>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">OWASP Risk Strategies</h3>
+                            <div class="space-y-2">
+                                <div class="p-2 bg-red-500/5 border border-red-500/20 rounded">
+                                    <span class="text-xs font-bold text-red-600 block">SQL Injection (SQLi)</span>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400">Malicious queries escape input forms. <strong class="text-green-600">Defense:</strong> Use parameterized queries and prepared statements exclusively.</p>
+                                </div>
+                                <div class="p-2 bg-red-500/5 border border-red-500/20 rounded">
+                                    <span class="text-xs font-bold text-red-600 block">Cross-Site Scripting (XSS)</span>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400">Script insertion execution inside users' browsers. <strong class="text-green-600">Defense:</strong> Context-aware output encoding and strict Content Security Policies (CSP).</p>
+                                </div>
                             </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Data Storage Governance</h3>
+                            <p class="text-xs text-gray-500">Never store raw cleartext passwords. Always run items through cryptographic functions using unique salts per entry:</p>
+                            <pre class="mt-1 p-2 bg-gray-50 border border-gray-100 rounded text-xs text-green-600 dark:text-green-400 font-mono">Password + Unique Cryptographic Salt ➔ Argon2id / bcrypt ➔ Safe Storage Hash</pre>
                         </div>
                     </div>
                 </div>
@@ -168,16 +215,15 @@ git checkout -b new-branch # Create and pivot to isolated branch footprint</pre>
 
     <footer class="mt-auto border-t border-gray-200 dark:border-slate-800 py-6 text-center text-xs text-gray-500">
         <div class="max-w-7xl mx-auto px-4">
-            <p>Designed for fast deployment via GitHub Pages. Single static dependency.</p>
+            <p>Designed for fast deployment via GitHub Pages. Pure vanilla JavaScript interactions.</p>
         </div>
     </footer>
 
     <script>
-        // Dark Mode Logic
+        // Theme switching engine
         const themeToggleBtn = document.getElementById('themeToggle');
         const themeIcon = document.getElementById('themeIcon');
         
-        // System preference or saved state check
         if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
             document.body.classList.add('dark-mode');
@@ -202,7 +248,7 @@ git checkout -b new-branch # Create and pivot to isolated branch footprint</pre>
             }
         });
 
-        // Real-time Dashboard Client Search Engine
+        // Search engine filter logic
         document.getElementById('searchInput').addEventListener('input', function(e) {
             const query = e.target.value.toLowerCase().trim();
             const cards = document.querySelectorAll('#topicsGrid section');
@@ -210,7 +256,6 @@ git checkout -b new-branch # Create and pivot to isolated branch footprint</pre>
             cards.forEach(card => {
                 const searchSpace = card.getAttribute('data-search').toLowerCase();
                 const contentText = card.innerText.toLowerCase();
-                
                 if (searchSpace.includes(query) || contentText.includes(query)) {
                     card.style.display = 'flex';
                 } else {
@@ -218,6 +263,76 @@ git checkout -b new-branch # Create and pivot to isolated branch footprint</pre>
                 }
             });
         });
+
+        // Live Subnetting Interactive sandbox logic
+        function calculateSubnet() {
+            const cidr = document.getElementById('cidrSelect').value;
+            const resDiv = document.getElementById('subnetCalcResult');
+            resDiv.classList.remove('hidden');
+            
+            let totalIps = Math.pow(2, 32 - parseInt(cidr));
+            let usableHosts = totalIps - 2;
+            let maskEnd = 256 - totalIps;
+            if (cidr == "24") maskEnd = 0;
+            
+            resDiv.innerHTML = `➔ Analysis for /${cidr}:<br>` + 
+                              `• Subnet Mask String: 255.255.255.${maskEnd}<br>` + 
+                              `• Structural Footprint Size: ${totalIps} Total Addresses<br>` + 
+                              `• Allocatable Payload Allocation: ${usableHosts} Usable Nodes/Hosts`;
+        }
+
+        // Live Terminal Simulation Command Logic Core
+        const termInput = document.getElementById('terminalInput');
+        const termOutput = document.getElementById('terminalOutput');
+
+        termInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                const cmdText = termInput.value.trim();
+                if (!cmdText) return;
+                
+                // Print command trace back to terminal window line
+                const cmdLine = document.createElement('div');
+                cmdLine.innerHTML = \`<span class="text-emerald-400">guest@hub:~$</span> <span class="text-white">\${escapeHtml(cmdText)}</span>\`;
+                termOutput.appendChild(cmdLine);
+                
+                // Parse standard terminal inputs
+                const normalizedCmd = cmdText.toLowerCase();
+                const respLine = document.createElement('div');
+                respLine.className = 'text-slate-300 pl-2 border-l border-slate-700 py-0.5';
+                
+                if (normalizedCmd === 'help') {
+                    respLine.innerHTML = "Available simulated instructions:<br>" +
+                                         "• <span class='text-yellow-400'>ls</span> - List configuration objects inside virtual path directory.<br>" +
+                                         "• <span class='text-yellow-400'>cat info.txt</span> - Display baseline resource payloads.<br>" +
+                                         "• <span class='text-yellow-400'>ip addr</span> - View loopback and ethernet structural addresses.<br>" +
+                                         "• <span class='text-yellow-400'>git status</span> - Run working workspace state diagnostics.<br>" +
+                                         "• <span class='text-yellow-400'>clear</span> - Purge logs from view display memory.";
+                } else if (normalizedCmd === 'ls') {
+                    respLine.innerHTML = "<span class='text-blue-400 font-bold'>network_configs/</span> &nbsp;&nbsp; <span class='text-blue-400 font-bold'>git_repos/</span> &nbsp;&nbsp; info.txt &nbsp;&nbsp; security_audit.log";
+                } else if (normalizedCmd === 'cat info.txt') {
+                    respLine.innerText = "IT Hub Terminal Core v2.4.0. Operational environment running clean structural sandboxes.";
+                } else if (normalizedCmd === 'ip addr') {
+                    respLine.innerHTML = "1: lo: &lt;LOOPBACK,UP&gt; mtu 65536<br>&nbsp;&nbsp;&nbsp;&nbsp;inet 127.0.0.1/8 scope host lo<br>" +
+                                         "2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500<br>&nbsp;&nbsp;&nbsp;&nbsp;inet 192.168.1.15/24 brd 192.168.1.255 scope global eth0";
+                } else if (normalizedCmd === 'git status') {
+                    respLine.innerHTML = "On branch main<br>Your branch is up to date with 'origin/main'.<br>nothing to commit, working tree clean";
+                } else if (normalizedCmd === 'clear') {
+                    termOutput.innerHTML = '';
+                    termInput.value = '';
+                    return;
+                } else {
+                    respLine.innerHTML = \`<span class="text-red-400">bash: \${escapeHtml(cmdText)}: command not found</span>\`;
+                }
+                
+                termOutput.appendChild(respLine);
+                termInput.value = '';
+                termOutput.scrollTop = termOutput.scrollHeight;
+            }
+        });
+
+        function escapeHtml(str) {
+            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
     </script>
 </body>
 </html>
