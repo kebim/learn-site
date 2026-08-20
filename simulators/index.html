@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Multi-Terminal Workspace Sandbox</title>
+    <script src="https://tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <script>tailwind.config = { darkMode: 'class' }</script>
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
+    
+    <!-- Top Workspace Controller -->
+    <header class="bg-slate-900 border-b border-slate-800 px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div>
+            <h1 class="text-lg font-bold text-slate-200 tracking-tight flex items-center gap-2">
+                <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                Interactive Shell Simulation Matrix
+            </h1>
+            <p class="text-xs text-slate-400">Run systems diagnostics checks. Use `clear` to reset view spaces.</p>
+        </div>
+        <a href="../index.html" class="px-4 py-1.5 bg-slate-800 text-xs font-semibold rounded-lg hover:bg-slate-700 transition border border-slate-700">← Back to Portal</a>
+    </header>
+
+    <!-- Side by Side Layout Engine -->
+    <main class="flex-grow p-4 lg:p-6 grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+        
+        <!-- Linux Shell Simulator Interface -->
+        <section id="linuxBox" class="bg-black border border-slate-800 rounded-xl flex flex-col overflow-hidden shadow-2xl transition-all duration-200">
+            <div class="bg-slate-900 px-4 py-2 flex justify-between items-center border-b border-slate-800 select-none">
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
+                    <span class="text-xs text-slate-400 font-mono font-bold tracking-wider">root@academy:~# linux_bash</span>
+                </div>
+                <button onclick="toggleScale('linuxBox')" class="text-xs font-bold text-slate-400 hover:text-white px-2 py-0.5 bg-slate-800 rounded border border-slate-700 transition">🗖 Maximize</button>
+            </div>
+            <div class="flex-grow p-4 font-mono text-xs overflow-y-auto space-y-2 h-[350px] lg:h-[500px]" id="linuxOutput">
+                <div class="text-emerald-400 font-bold">Linux Kernel Architecture Online Sandbox. Type 'help' or commands to start.</div>
+            </div>
+            <div class="bg-slate-950 p-2 border-t border-slate-900 flex items-center font-mono text-xs">
+                <span class="text-emerald-500 px-2 font-bold">student@bash:~$</span>
+                <input type="text" id="linuxCmd" class="bg-transparent text-white focus:outline-none flex-grow font-mono" placeholder="Type command here..." autofocus>
+            </div>
+        </section>
+
+        <!-- Windows PowerShell Simulator Interface -->
+        <section id="winBox" class="bg-zinc-950 border border-zinc-800 rounded-xl flex flex-col overflow-hidden shadow-2xl transition-all duration-200">
+            <div class="bg-blue-950 px-4 py-2 flex justify-between items-center border-b border-blue-900 select-none">
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-blue-400 inline-block"></span>
+                    <span class="text-xs text-blue-200 font-mono font-bold tracking-wider">Administrator: Windows PowerShell</span>
+                </div>
+                <button onclick="toggleScale('winBox')" class="text-xs font-bold text-blue-300 hover:text-white px-2 py-0.5 bg-blue-900 rounded border border-blue-800 transition">🗖 Maximize</button>
+            </div>
+            <div class="flex-grow p-4 font-mono text-xs overflow-y-auto space-y-2 h-[350px] lg:h-[500px] text-cyan-100" id="winOutput">
+                <div>Windows PowerShell Core Ecosystem Setup.<br>Copyright (C) Microsoft Corp. Type 'help' or 'Get-Service'.</div>
+            </div>
+            <div class="bg-zinc-900 p-2 border-t border-zinc-800 flex items-center font-mono text-xs">
+                <span class="text-cyan-400 px-2 font-bold">PS C:\Users\Admin></span>
+                <input type="text" id="winCmd" class="bg-transparent text-white focus:outline-none flex-grow font-mono" placeholder="Type command here...">
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Universal scale management routing
+        function toggleScale(targetId) {
+            const el = document.getElementById(targetId);
+            const btn = el.querySelector('button');
+            if(el.classList.contains('terminal-fullscreen')) {
+                el.classList.remove('terminal-fullscreen');
+                btn.textContent = '🗖 Maximize';
+            } else {
+                el.classList.add('terminal-fullscreen');
+                btn.textContent = '🗗 Restore';
+            }
+        }
+
+        // Logic routing for the simulator components
+        function setupShell(inputElId, outputElId, systemsType) {
+            const inputEl = document.getElementById(inputElId);
+            const outputEl = document.getElementById(outputElId);
+
+            inputEl.addEventListener('keydown', function(e) {
+                if(e.key === 'Enter') {
+                    const rawVal = this.value.trim();
+                    const cmd = rawVal.toLowerCase();
+                    this.value = '';
+                    if(!rawVal) return;
+
+                    // Eco output record
+                    let prefix = systemsType === 'linux' ? 'student@bash:~$ ' : 'PS C:\\Users\\Admin> ';
+                    outputEl.innerHTML += `<div class="text-slate-400 mt-2">${prefix}${rawVal}</div>`;
+
+                    let response = '';
+
+                    // Execution validation router logic
+                    if (cmd === 'clear') {
+                        outputEl.innerHTML = '';
+                        return;
+                    } else if (cmd === 'help') {
+                        response = systemsType === 'linux' 
+                            ? 'Supported diagnostic commands: help, ip addr, ls, cat info.txt, clear' 
+                            : 'Available Cmdlets: help, Get-NetIPAddress, dir, Get-Service, clear';
+                    } else if (cmd === 'ip addr' || cmd === 'get-netipaddress') {
+                        response = 'inet 192.168.1.45/24 brd 192.168.1.255 scope global dynamic state UP';
+                    } else if (cmd === 'ls' || cmd === 'dir') {
+                        response = 'Mode                LastWriteTime         Length Name\n----                -------------         ------ ----\n-a----        2026/08/20    21:34           2048 info.txt';
+                    } else if (cmd === 'cat info.txt' || cmd === 'get-content info.txt') {
+                        response = 'SUCCESS: Systems online. Core subnets operating inside target margins.';
+                    } else if (cmd === 'get-service') {
+                        response = 'Status   Name               DisplayName\n------   ----               -----------\nRunning  wuauserv           Windows Update';
+                    } else {
+                        response = `Command execution error: '${rawVal}' not found or recognized inside this simulation context environment.`;
+                    }
+
+                    outputEl.innerHTML += `<div class="whitespace-pre-wrap tracking-wide mt-1 text-slate-300">${response}</div>`;
+                    outputEl.scrollTop = outputEl.scrollHeight;
+                }
+            });
+        }
+
+        // Initialize shell triggers
+        setupShell('linuxCmd', 'linuxOutput', 'linux');
+        setupShell('winCmd', 'winOutput', 'windows');
+    </script>
+</body>
+</html>
