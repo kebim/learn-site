@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git & GitHub Mastery</title>
+    <script src="https://tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <script>tailwind.config = { darkMode: 'class' }</script>
+</head>
+<body class="min-h-screen flex flex-col">
+    <nav class="sticky top-0 z-40 custom-card backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center space-x-2 font-bold text-xl tracking-tight text-purple-600">
+                <span>🐙 Git Repository Track</span>
+            </a>
+            <div class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="../index.html" class="hover:text-blue-500">Dashboard</a>
+                <a href="../linux/index.html" class="hover:text-blue-500">Linux</a>
+                <a href="../networking/index.html" class="hover:text-blue-500">Networking</a>
+                <a href="../simulators/index.html" class="text-emerald-500 font-bold">Launch Terminals</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow max-w-4xl w-full mx-auto px-4 py-8">
+        <h2 class="text-3xl font-extrabold tracking-tight mb-6">Version Control Management Pipeline</h2>
+        
+        <div class="space-y-6">
+            <div class="custom-card p-6 rounded-2xl shadow-sm">
+                <h3 class="text-lg font-bold mb-2">1. Local Tracking Setup Flow</h3>
+                <pre class="p-3 bg-slate-900 text-purple-400 rounded-xl text-xs overflow-x-auto">
+git init                           # Spin up local data tracking node
+git add .                          # Track all files in the current folder
+git commit -m "feat: design pages" # Lock down code versions locally</pre>
+            </div>
+
+            <div class="custom-card p-6 rounded-2xl shadow-sm">
+                <h3 class="text-lg font-bold mb-2">2. Synchronizing with GitHub Remote Targets</h3>
+                <pre class="p-3 bg-slate-900 text-purple-400 rounded-xl text-xs overflow-x-auto">
+git remote add origin https://github.com # Point to remote
+git branch -M main                                      # Enforce primary naming rule
+git push -u origin main                                 # Export staged logic safely</pre>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
