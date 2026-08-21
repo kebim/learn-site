@@ -3,18 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Networking Architecture Track & Subnet Sandbox</title>
+    <title>Networking Architecture Track</title>
     <script src="https://tailwindcss.com"></script>
-    <style>
-        @import url('https://googleapis.com');
-        :root { --bg: #f8fafc; --card: #ffffff; --text: #0f172a; --border: #e2e8f0; }
-        .dark { --bg: #0f172a; --card: #1e293b; --text: #f8fafc; --border: #334155; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); transition: all 0.2s ease; }
-        .custom-card { background-color: var(--card); border: 1px solid var(--border); }
-        code, pre { font-family: 'JetBrains+Mono', monospace; }
-    </style>
+    <!-- Relative route backing up out of the current track folder to catch styling -->
+    <link rel="stylesheet" href="../css/style.css">
     <script>tailwind.config = { darkMode: 'class' }</script>
 </head>
+
 <body class="min-h-screen flex flex-col">
 
     <nav class="sticky top-0 z-40 custom-card backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b">
