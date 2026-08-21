@@ -3,13 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Content Manager Decap CMS</title>
+    <title>Content Manager</title>
+    
+    </script>
   </head>
   <body>
-    <!-- Inject Decap CMS Core Script -->
+    <!-- Main Decap Engine CDN -->
     <script src="https://jsdelivr.net"></script>
     <script>
-      // Forces the browser to look inside the correct folder path for config.yml
+      // Explicit configuration object injection
       window.CMS_CONFIG = {
         config: {
           backend: {
@@ -18,7 +20,24 @@
             branch: "main",
             base_url: "https://learnkebim.mibekebim.workers.dev",
             auth_endpoint: "/auth"
-          }
+          },
+          media_folder: "images/uploads",
+          public_folder: "/images/uploads",
+          collections: [
+            {
+              name: "lessons",
+              label: "Teaching Materials",
+              folder: "lessons",
+              create: true,
+              slug: "{{slug}}",
+              fields: [
+                { label: "Title", name: "title", widget: "string" },
+                { label: "Publish Date", name: "date", widget: "datetime" },
+                { label: "Subject/Topic", name: "topic", widget: "string" },
+                { label: "Lesson Body", name: "body", widget: "markdown" }
+              ]
+            }
+          ]
         }
       };
     </script>
