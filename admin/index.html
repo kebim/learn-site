@@ -6,7 +6,21 @@
     <title>Content Manager</title>
   </head>
   <body>
-    <!-- Main Decap Engine CDN Deployment -->
+    <!-- Inject Decap CMS Core Script -->
     <script src="https://jsdelivr.net"></script>
+    <script>
+      // Forces the browser to look inside the correct folder path for config.yml
+      window.CMS_CONFIG = {
+        config: {
+          backend: {
+            name: "github",
+            repo: "kebim/learn-site",
+            branch: "main",
+            base_url: "https://learnkebim.mibekebim.workers.dev",
+            auth_endpoint: "/auth"
+          }
+        }
+      };
+    </script>
   </body>
 </html>
