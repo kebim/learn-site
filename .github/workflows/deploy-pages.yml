@@ -20,17 +20,11 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v6
-      - name: Set up pnpm
-        uses: pnpm/action-setup@v4
+      - name: Install pnpm and Node.js
+        uses: pnpm/setup@v2
         with:
-          version: 10
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: pnpm
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+          runtime: node@22
+          cache: true
       - name: Configure public site links
         run: |
           cat > .env.production.local << 'EOF'
