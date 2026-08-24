@@ -19,12 +19,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v6
-      - name: Install pnpm and Node.js
-        uses: pnpm/setup@v2
+        uses: actions/checkout@v7
+      - name: Install pnpm 10 from package.json
+        uses: pnpm/action-setup@v6
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
         with:
-          runtime: node@22
-          cache: true
+          node-version: 22
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
       - name: Configure public site links
         run: |
           cat > .env.production.local << 'EOF'
@@ -32,15 +36,6 @@ jobs:
           VITE_LEARN_SITE_URL=${{ vars.LEARN_SITE_URL }}
           VITE_TECH_SITE_URL=${{ vars.TECH_SITE_URL }}
           EOF
-      - name: Build Learn site
-        run: pnpm build
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: dist/public
-
   deploy:
     environment:
       name: github-pages
@@ -50,4 +45,5 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v4          
+          
