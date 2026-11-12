@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://learn.mibekpandey.com.np/sitemap.xml
