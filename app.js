@@ -5,8 +5,8 @@ const byId={};flat.forEach(l=>byId[l.id]=l);Object.keys(PAGES).forEach(k=>byId[k
 const L=id=>byId[id]&&byId[id].course?"lessons/"+id+".html":"#"+id;const A=m=>`<a href="${m.href||L(m.id)}">${m.title}</a>`;
 const item=m=>m.children?`<div class="has-sub"><button type="button" aria-expanded="false">${m.title} &#9662;</button><div class="sub">${m.children.map(c=>c.children?`<div class="grp"><b>${c.title}</b>${c.children.map(A).join("")}</div>`:A(c)).join("")}</div></div>`:A(m);
 $("#mast").innerHTML=`<a class="brand" href="#"><img src="assets/logo.png" alt="" onerror="this.remove()"><span><b>LEARN</b><i>/</i>TECH</span></a><nav class="menu" id="menu" aria-label="Primary">${MENU.map(item).join("")}</nav><div class="search"><input id="q" type="search" placeholder="Search lessons  ( / )" aria-label="Search lessons" autocomplete="off"><div id="sr" hidden></div></div><button id="theme" class="ib" aria-label="Toggle light or dark theme">&#9680;</button><a class="xlink" href="${SITE.tech}">Open Tech &#8599;</a><button class="burger" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>`;
-async function visits(el,ns){if(!el||!ns)return;try{const k="v-"+ns,u=sessionStorage.getItem(k)?"":"up",r=await fetch("https://api.counterapi.dev/v1/"+ns+"/visits/"+u),j=await r.json();sessionStorage.setItem(k,"1");el.textContent="Visitors: "+Number(j.count).toLocaleString()}catch(e){el.textContent=""}}
-$("#foot").innerHTML=FOOTER.map(A).join("")+`<p>${HOME.footer}</p><p id="vc"></p>`;visits($("#vc"),SITE.counter);
+async function visits(el,s,url){if(!el||!url)return;try{const k="v-"+s,h=sessionStorage.getItem(k)?"":"&hit=1",j=await(await fetch(url+"?site="+s+h)).json();sessionStorage.setItem(k,"1");if(Number.isFinite(j.count))el.textContent="Visitors: "+j.count.toLocaleString()}catch(e){}}
+$("#foot").innerHTML=FOOTER.map(A).join("")+`<p>${HOME.footer}</p><p id="vc"></p>`;visits($("#vc"),SITE.counter,SITE.counterUrl);
 $(".burger").onclick=e=>{const o=$("#menu").classList.toggle("open");e.currentTarget.setAttribute("aria-expanded",o)};
 document.querySelectorAll(".has-sub>button").forEach(b=>b.onclick=()=>{const p=b.parentNode,o=p.classList.toggle("open");b.setAttribute("aria-expanded",o)});
 const LS={get(k,d){try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
@@ -51,5 +51,6 @@ document.title=l.title+" | Learn / Tech"}
 function page(p){$("#app").innerHTML=`<div class="wrap page solo"><article><p class="crumb"><a href="#">Learn</a></p><h1>${p.title}</h1>${p.html}</article></div>`;document.title=p.title+" | Learn / Tech"}
 function route(){const id=location.hash.slice(1),p=byId[id];$("#menu").classList.remove("open");
 if(p&&p.course){location.replace("lessons/"+p.id+".html");return}if(p){page(p);scrollTo(0,0)}else{home();const el=id&&document.getElementById(id);el?el.scrollIntoView():scrollTo(0,0)}}
+document.addEventListener("click",e=>{if(!e.target.closest(".has-sub"))document.querySelectorAll(".has-sub.open").forEach(x=>{x.classList.remove("open");x.firstChild.setAttribute("aria-expanded","false")});if(e.target.closest(".menu a")){document.querySelectorAll(".has-sub.open").forEach(x=>x.classList.remove("open"));const m=document.getElementById("menu");if(m)m.classList.remove("open")}});
 addEventListener("hashchange",route);route();
 })();

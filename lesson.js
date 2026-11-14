@@ -5,6 +5,7 @@ if(LS.get("theme",""))root.dataset.theme=LS.get("theme","");
 $("#theme").onclick=()=>{const dk=root.dataset.theme?root.dataset.theme==="dark":matchMedia("(prefers-color-scheme:dark)").matches;root.dataset.theme=dk?"light":"dark";LS.set("theme",root.dataset.theme)};
 $(".burger").onclick=e=>{const o=$("#menu").classList.toggle("open");e.currentTarget.setAttribute("aria-expanded",o)};
 document.querySelectorAll(".has-sub>button").forEach(b=>b.onclick=()=>{const o=b.parentNode.classList.toggle("open");b.setAttribute("aria-expanded",o)});
+document.addEventListener("click",e=>{if(!e.target.closest(".has-sub"))document.querySelectorAll(".has-sub.open").forEach(x=>{x.classList.remove("open");x.firstChild.setAttribute("aria-expanded","false")});if(e.target.closest(".menu a")){document.querySelectorAll(".has-sub.open").forEach(x=>x.classList.remove("open"));const m=document.getElementById("menu");if(m)m.classList.remove("open")}});
 const bar=document.createElement("div");bar.className="progress";body.prepend(bar);
 addEventListener("scroll",()=>{const h=root;bar.style.width=(h.scrollTop/((h.scrollHeight-h.clientHeight)||1)*100)+"%"});
 // completion
@@ -28,5 +29,5 @@ qi.oninput=async()=>{const v=qi.value.trim().toLowerCase();if(!v){sr.hidden=true
 sr.onclick=()=>{sr.hidden=true;qi.value=""};
 addEventListener("keydown",e=>{if(e.key==="/"&&!/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)){e.preventDefault();qi.focus()}if(e.key==="Escape"){sr.hidden=true;qi.blur()}});
 // visitor counter
-(async()=>{const el=$("#vc"),ns=el.dataset.ns;if(!ns)return;try{const k="v-"+ns,u=sessionStorage.getItem(k)?"":"up",j=await (await fetch("https://api.counterapi.dev/v1/"+ns+"/visits/"+u)).json();sessionStorage.setItem(k,"1");el.textContent="Visitors: "+Number(j.count).toLocaleString()}catch(e){}})();
+(async()=>{const el=$("#vc"),s=el.dataset.ns,url=el.dataset.url;if(!s||!url)return;try{const k="v-"+s,h=sessionStorage.getItem(k)?"":"&hit=1",j=await(await fetch(url+"?site="+s+h)).json();sessionStorage.setItem(k,"1");if(Number.isFinite(j.count))el.textContent="Visitors: "+j.count.toLocaleString()}catch(e){}})();
 })();

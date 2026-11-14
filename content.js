@@ -10,7 +10,7 @@
                     to MENU, and for id-pages add the page to PAGES.
    ADD A ROADMAP  : add an object to ROADMAPS (copy an existing one).
    ===================================================================== */
-const SITE={counter:"learn-mibekpandey-com-np",learn:"https://learn.mibekpandey.com.np",tech:"https://tech.mibekpandey.com.np"};
+const SITE={counter:"learn",counterUrl:"" /* paste your Cloudflare Worker URL here */,learn:"https://learn.mibekpandey.com.np",tech:"https://tech.mibekpandey.com.np"};
 const TOOLS_URL=SITE.tech;
 const HOME={eyebrow:"Learn / roadmaps for real practice",title:"Choose a track.<br><em>Build the fundamentals.</em><br>Ship proof of work.",
  summary:"Structured learning paths for IT, Linux, networking, cybersecurity, web development, and automation, designed around useful practice, not endless tabs.",
@@ -155,6 +155,17 @@ const EXTRA={
 <p>Try these numbers in the <a href="${TOOLS_URL}#sched">scheduling simulator</a>.</p>`
 };
 COURSES.forEach(c=>c.lessons.forEach(l=>{if(NE[l.id])l.ne=NE[l.id];if(EXTRA[l.id])l.html+=EXTRA[l.id]}));
+
+COURSES[1].lessons.push({id:"logic-build",title:"Designing and testing a circuit",html:`<p>Every digital design follows the same loop: describe the behaviour, write the truth table, derive an expression, draw the gates, then test every input combination. You can practise the whole loop in the <a href="${TOOLS_URL}#builder">circuit builder</a> on the tech site.</p>
+<h3>Step 1: Describe and tabulate</h3><p>Take a half adder, which adds two single bits. It needs two outputs: a sum bit S and a carry bit C.</p>
+<table><tr><th>A</th><th>B</th><th>C (carry)</th><th>S (sum)</th></tr><tr><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>1</td><td>0</td><td>1</td></tr><tr><td>1</td><td>0</td><td>0</td><td>1</td></tr><tr><td>1</td><td>1</td><td>1</td><td>0</td></tr></table>
+<h3>Step 2: Find the expressions</h3><p>The sum is 1 when the inputs differ, so <code>S = A XOR B</code>. The carry is 1 only when both inputs are 1, so <code>C = A AND B</code>.</p>
+<h3>Step 3: Build it</h3><ol><li>Open the <a href="${TOOLS_URL}#builder">Build yourself</a> tool and press Clear board.</li><li>Add two Switches, one XOR gate, one AND gate and two Lamps.</li><li>Drag a wire from each switch's output dot to an input pin on both gates.</li><li>Connect the XOR output to one lamp (S) and the AND output to the other (C).</li></ol>
+<h3>Step 4: Test every row</h3><p>Set the switches to all four combinations and compare the builder's truth table with yours. A circuit can match three rows and still fail the fourth, so never test just one case.</p>
+<h3>Debugging checklist</h3><p>An unconnected input pin counts as 0, so a lamp that never lights often means a missing wire. Each input pin accepts only one wire. If a wire loops back to an earlier gate you have created feedback, and the circuit now has memory, as in the SR latch example.</p>
+<h3>Practice</h3><p>1. How many NAND gates are needed to build an XOR gate?</p><details><summary>Show answer</summary><p>Four. Load the "XOR from NAND" example in the builder to see them.</p></details>
+<p>2. An alarm sounds when the door is open and the system is armed, or when the panic button is pressed. Write the expression and count the truth table rows.</p><details><summary>Show answer</summary><p><code>Y = A\u00b7B + P</code>. Three inputs give 2<sup>3</sup> = 8 rows.</p></details>
+<p>You can also explore each gate first in the <a href="${TOOLS_URL}#sim">logic simulator</a>.</p>`});
 const QUIZ={
 "linux-fs":{q:"Where do system logs normally live?",o:["/etc","/var","/proc"],a:1,why:"/var holds changing data such as logs. /etc holds configuration."},
 "linux-perms":{q:"What does chmod 640 give the group?",o:["Read only","Read and write","Nothing"],a:0,why:"6 = rw for the owner, 4 = r for the group, 0 = nothing for others."},
@@ -165,6 +176,7 @@ const QUIZ={
 "logic-ff":{q:"Which flip-flop toggles when both inputs are 1?",o:["SR","JK","D"],a:1,why:"JK with J=K=1 toggles. SR with S=R=1 is invalid."},
 "logic-kmap":{q:"Why are K-map axes labelled 00, 01, 11, 10?",o:["Gray code: neighbours differ by one bit","Alphabetical order","It saves space"],a:0,why:"One-bit changes between neighbours make groups simplify."},
 "logic-adder":{q:"A half adder's carry output equals:",o:["A XOR B","A AND B","A OR B"],a:1,why:"Carry is 1 only when both bits are 1."},
+"logic-build":{q:"Why test every row of the truth table?",o:["It makes the circuit faster","A circuit can match some rows and still fail others","Gates wear out"],a:1,why:"Bugs often hide in a single input combination."},
 "logic-counters":{q:"How many flip-flops do you need to count 0 to 9?",o:["3","4","10"],a:1,why:"3 give 8 states, 4 give 16, so 4 is the minimum."},
 "arch-cycle":{q:"Which register holds the address of the next instruction?",o:["Program counter","Stack pointer","ALU"],a:0,why:"The PC is updated after each fetch."},
 "arch-memory":{q:"Why do caches speed programs up?",o:["Locality of reference","They hold the OS","They are bigger than RAM"],a:0,why:"Programs reuse nearby data, so small fast memory is enough."},

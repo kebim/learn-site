@@ -30,7 +30,7 @@ const page=`<!DOCTYPE html>
 ${q?`<section class="quiz" data-a="${q.a}" data-why="${e(q.why)}"><h3>Check yourself</h3><p>${q.q}</p>${q.o.map((o,k)=>`<button data-k="${k}">${o}</button>`).join("")}<p id="qa" role="status"></p></section>`:""}
 <button id="dn" class="go" data-id="${l.id}">Mark as complete</button>
 <div class="pn"><span>${prev?`<a href="${prev.id}.html">&larr; ${prev.title}</a>`:""}</span><span>${next?`<a href="${next.id}.html">${next.title} &rarr;</a>`:""}</span></div></article></div></main>
-<footer>${FOOTER.map(A).join("")}<p>${HOME.footer}</p><p id="vc" data-ns="${SITE.counter}"></p></footer>
+<footer>${FOOTER.map(A).join("")}<p>${HOME.footer}</p><p id="vc" data-ns="${SITE.counter}" data-url="${SITE.counterUrl}"></p></footer>
 <script src="../lesson.js"></script></body></html>`;
 fs.writeFileSync(path.join(__dirname,"lessons",l.id+".html"),page)});
 fs.writeFileSync(path.join(__dirname,"search.json"),JSON.stringify(flat.map(l=>({id:l.id,title:l.title,course:l.c.title,t:(l.title+" "+strip(l.html)).toLowerCase()}))));
